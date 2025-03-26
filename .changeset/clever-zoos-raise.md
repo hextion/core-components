@@ -1,5 +1,5 @@
 ---
-'@alfalab/core-components-file-upload-item': minor
+'@alfalab/core-components-file-upload-item': patch
 ---
 
 Изменен тип передаваемого размера в IconButton

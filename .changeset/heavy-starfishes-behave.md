@@ -1,5 +1,5 @@
 ---
-'@alfalab/core-components-plate': minor
+'@alfalab/core-components-plate': patch
 ---
 
 - Изменен тип передаваемого размера в Button

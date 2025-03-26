@@ -1,5 +1,5 @@
 ---
-'@alfalab/core-components-confirmation': minor
+'@alfalab/core-components-confirmation': patch
 ---
 
-Изменен вид передаваемого размера в Button
+Изменен тип передаваемого размера в Button

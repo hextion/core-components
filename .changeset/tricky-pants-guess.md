@@ -1,5 +1,5 @@
 ---
-'@alfalab/core-components-navigation-bar': minor
+'@alfalab/core-components-navigation-bar': patch
 ---
 
-Изменен вид передаваемого размера в Button
+Изменен тип передаваемого размера в Button
