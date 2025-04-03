@@ -7,7 +7,7 @@ import {
 
 const autocompleteEntryTransformer = (source, j) => {
     modifyImportPath(source, j, (path) =>
-        /@alfalab\/core-components[-/]input-autocomplete\//.test(path)
+        /@balafla\/core-components[-/]input-autocomplete\//.test(path)
             ? path.replace('/responsive', '')
             : path,
     );

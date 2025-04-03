@@ -2,7 +2,8 @@ import {
     StatusBadgeIcon,
     StatusBadgeSizes,
     StatusBadgeViews,
-} from '@alfalab/core-components-status-badge';
+} from '@balafla/core-components-status-badge';
+
 import { CheckmarkCompactMIcon } from '@alfalab/icons-glyph/CheckmarkCompactMIcon';
 import { CheckmarkCompactSIcon } from '@alfalab/icons-glyph/CheckmarkCompactSIcon';
 import { ClockHandsCompactMIcon } from '@alfalab/icons-glyph/ClockHandsCompactMIcon';

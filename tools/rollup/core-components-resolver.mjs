@@ -44,7 +44,7 @@ export const coreComponentsResolver = ({ importFrom }) => ({
 
             if (code) {
                 const requireRegExp = new RegExp(
-                    /(\b(?:require\(|import |from )['"])(@alfalab\/core-components-[^\/\n]+)(\/.*)?(['"])/,
+                    /(\b(?:require\(|import |from )['"])(@balafla\/core-components-[^\/\n]+)(\/.*)?(['"])/,
                     'g',
                 );
 
@@ -57,7 +57,7 @@ export const coreComponentsResolver = ({ importFrom }) => ({
 });
 
 /**
- * Заменяет импорты типов в d.ts с packages/{packageName}/src/* на @alfalab/core-components-{packageName}/*
+ * Заменяет импорты типов в d.ts с packages/{packageName}/src/* на @balafla/core-components-{packageName}/*
  */
 export const packagesTypingResolver = () => ({
     name: 'packages-typings-resolver',
@@ -70,7 +70,7 @@ export const packagesTypingResolver = () => ({
 
                     bundles[bundleName].source = source.replaceAll(
                         re,
-                        'import($1@alfalab/core-components-$2$3$4)',
+                        'import($1@balafla/core-components-$2$3$4)',
                     );
                 }
             }

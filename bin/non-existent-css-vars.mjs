@@ -7,9 +7,9 @@ import * as process from 'node:process';
 const packages = JSON.parse(
     shell.exec(
         `lerna list \\
-        --ignore @alfalab/core-components-bank-card \\
-        --ignore @alfalab/core-components-themes \\
-        --ignore @alfalab/core-components-vars \\
+        --ignore @balafla/core-components-bank-card \\
+        --ignore @balafla/core-components-themes \\
+        --ignore @balafla/core-components-vars \\
         --json \\
         --all`,
         { silent: true },

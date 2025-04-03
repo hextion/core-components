@@ -8,7 +8,7 @@ import {
 
 const tooltipEntryTransformer = (source, j) => {
     modifyImportPath(source, j, (path) =>
-        /@alfalab\/core-components[-/]tooltip\//.test(path)
+        /@balafla\/core-components[-/]tooltip\//.test(path)
             ? path.replace('/responsive', '')
             : path,
     );

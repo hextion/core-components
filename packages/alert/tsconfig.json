@@ -6,8 +6,8 @@
         "rootDirs": ["src"],
         "baseUrl": ".",
         "paths": {
-            "@alfalab/core-components-*": ["../*/src"],
-            "@alfalab/core-components-plate/*": ["../plate/src/*"]
+            "@balafla/core-components-*": ["../*/src"],
+            "@balafla/core-components-plate/*": ["../plate/src/*"]
         }
     },
     "references": [{ "path": "../plate" }]

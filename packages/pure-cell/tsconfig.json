@@ -6,9 +6,9 @@
         "rootDirs": ["src"],
         "baseUrl": ".",
         "paths": {
-            "@alfalab/core-components-*": ["../*/src"],
-            "@alfalab/core-components-button/*": ["../button/src/*"],
-            "@alfalab/core-components-icon-view/*": ["../icon-view/src/*"]
+            "@balafla/core-components-*": ["../*/src"],
+            "@balafla/core-components-button/*": ["../button/src/*"],
+            "@balafla/core-components-icon-view/*": ["../icon-view/src/*"]
         }
     },
     "references": [

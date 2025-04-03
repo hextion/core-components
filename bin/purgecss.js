@@ -10,7 +10,7 @@ const ignorePackages = ['themes', 'vars', 'grid'];
 
 const cwd = process.cwd();
 const pkgPath = path.resolve(cwd, 'package.json');
-const pkgName = require(pkgPath).name.replace('@alfalab/core-components-', '');
+const pkgName = require(pkgPath).name.replace('@balafla/core-components-', '');
 
 const shouldSkipPath = (path) =>
     ignorePackages.some(

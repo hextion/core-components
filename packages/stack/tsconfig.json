@@ -6,7 +6,7 @@
         "rootDirs": ["src"],
         "baseUrl": ".",
         "paths": {
-            "@alfalab/core-components-*": ["../*/src"]
+            "@balafla/core-components-*": ["../*/src"]
         }
     },
     "references": [{ "path": "../input" }, { "path": "../portal" }]

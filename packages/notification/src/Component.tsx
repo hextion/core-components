@@ -9,15 +9,15 @@ import React, {
 } from 'react';
 import mergeRefs from 'react-merge-refs';
 import { useSwipeable } from 'react-swipeable';
-import cn from 'classnames';
-import elementClosest from 'element-closest';
-
-import { Portal } from '@alfalab/core-components-portal';
-import { Stack } from '@alfalab/core-components-stack';
+import { Portal } from '@balafla/core-components-portal';
+import { Stack } from '@balafla/core-components-stack';
 import {
     ToastPlateDesktop,
     ToastPlateDesktopProps,
-} from '@alfalab/core-components-toast-plate/desktop';
+} from '@balafla/core-components-toast-plate/desktop';
+import cn from 'classnames';
+import elementClosest from 'element-closest';
+
 import { stackingOrder } from '@alfalab/stack-context';
 
 import { useClickOutside } from './utils';

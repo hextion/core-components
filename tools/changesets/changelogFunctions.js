@@ -64,7 +64,7 @@ const getDependencyReleaseLine = (changesets, dependenciesUpdated) => {
 
     const updatedDependenciesList = dependenciesUpdated.map(
         (dependency) =>
-            `  - ${dependency.name.replace('@alfalab/core-components-', '')}@${
+            `  - ${dependency.name.replace('@balafla/core-components-', '')}@${
                 dependency.newVersion
             }`,
     );

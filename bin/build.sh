@@ -15,19 +15,19 @@ mkdir -p dist
 # собираю css пакеты
 copy_css="yarn copyfiles -u 1 \"src/**/*.{css,js}\" dist"
 lerna exec \
-    --scope @alfalab/core-components-vars \
-    --scope @alfalab/core-components-themes \
+    --scope @balafla/core-components-vars \
+    --scope @balafla/core-components-themes \
     -- "$copy_css"
 
 # собираю пакет themes
-lerna exec --scope @alfalab/core-components-themes -- node $(pwd)/bin/build-themes.js
+lerna exec --scope @balafla/core-components-themes -- node $(pwd)/bin/build-themes.js
 
 # экспорт CSS-переменных в JS-переменные
-lerna exec --scope @alfalab/core-components-vars -- node $(pwd)/bin/export-css-custom-properties-as-js-vars.js
+lerna exec --scope @balafla/core-components-vars -- node $(pwd)/bin/export-css-custom-properties-as-js-vars.js
 
 # собираю все подпакеты с компонентами
 lerna exec --concurrency $CONCURRENCY \
-    --ignore @alfalab/core-components-codemod \
+    --ignore @balafla/core-components-codemod \
     -- $(pwd)/bin/rollup.sh
 
 # копирую package.json в сборку корневого пакета

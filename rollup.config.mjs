@@ -31,7 +31,7 @@ const currentPkg = path.join(currentPackageDir, 'package.json');
 const rootPkg = require(path.resolve(currentPackageDir, '../../package.json'));
 const pkg = require(currentPkg);
 
-const currentComponentName = pkg.name.replace('@alfalab/core-components-', '');
+const currentComponentName = pkg.name.replace('@balafla/core-components-', '');
 
 const externals = [
     ...externalsWithEntryPoints(Object.keys(pkg.dependencies || {})),
@@ -46,7 +46,7 @@ const baseConfig = {
         '!src/**/*.mdx',
         '!src/**/*.d.ts',
     ],
-    plugins: [wildcardExternal(['@alfalab/core-components-*/**'])],
+    plugins: [wildcardExternal(['@balafla/core-components-*/**'])],
     external: externals,
 };
 
@@ -74,7 +74,7 @@ const sourceCopyPlugin = copy({
                         .toString()
                         .replaceAll(
                             /@import.*\/(.*)\/src\/(.*)\.css['"];/g,
-                            "@import '@alfalab/core-components-$1/src/$2.css';",
+                            "@import '@balafla/core-components-$1/src/$2.css';",
                         );
                 }
 

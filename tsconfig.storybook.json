@@ -16,7 +16,7 @@
         "rootDirs": ["packages"],
         "baseUrl": "./",
         "paths": {
-            "@alfalab/core-components-*": ["packages/*/src"]
+            "@balafla/core-components-*": ["packages/*/src"]
         }
     },
     "exclude": ["node_modules", "build", "coverage"]

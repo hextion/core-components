@@ -103,7 +103,7 @@ function groupByReleaseType(cs) {
 
     return cs.releases.reduce(
         (result, rel) => {
-            const packageName = rel.name.replace('@alfalab/core-components-', '');
+            const packageName = rel.name.replace('@balafla/core-components-', '');
 
             // Новые компоненты публикуем миноркой, а не мажоркой.
             if (rel.type === 'major' && ~newComponentPhraseIdx) {
@@ -277,7 +277,7 @@ async function releaseRoot() {
     });
     shell.cd('..');
 
-    if (publishRet.stdout.indexOf(`+ @alfalab/core-components@${nextVersion}`) !== -1) {
+    if (publishRet.stdout.indexOf(`+ @balafla/core-components@${nextVersion}`) !== -1) {
         return true;
     }
 

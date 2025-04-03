@@ -1,9 +1,8 @@
 import type { HTMLAttributes, ReactElement, ReactNode, RefObject } from 'react';
 import type { HandledEvents } from 'react-swipeable/es/types';
 import type { TransitionProps } from 'react-transition-group/Transition';
-
-import type { BaseModalProps } from '@alfalab/core-components-base-modal';
-import type { NavigationBarPrivateProps as NavigationBarProps } from '@alfalab/core-components-navigation-bar-private';
+import type { BaseModalProps } from '@balafla/core-components-base-modal';
+import type { NavigationBarPrivateProps as NavigationBarProps } from '@balafla/core-components-navigation-bar-private';
 
 import type { BackgroundColorType } from '../../types';
 
@@ -13,7 +12,7 @@ export type BottomSheetProps = {
     /**
      * Метод, позволяющий донастраивать высоту контейнера для BottomSheet, например с учётом safe-area
      */
-    adjustContainerHeight?: (height: number) => number
+    adjustContainerHeight?: (height: number) => number;
     /**
      * Контент
      */

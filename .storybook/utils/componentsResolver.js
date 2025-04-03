@@ -1,11 +1,11 @@
 const path = require('path');
 
-const componentsPrefix = '@alfalab/core-components-';
+const componentsPrefix = '@balafla/core-components-';
 const packagesDir = path.resolve(__dirname, '../../packages');
 const distDir = path.resolve(__dirname, '../../dist');
 
 /**
- * Локально резолвит импорт @alfalab/core-components.
+ * Локально резолвит импорт @balafla/core-components.
  * Ищет эти модули не в node_modules, а в папке `packagesDir`, либо в `distDir`.
  */
 class ComponentResolverPlugin {
