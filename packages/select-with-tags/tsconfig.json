@@ -5,18 +5,18 @@
     "compilerOptions": {
         "rootDir": "src",
         "paths": {
-            "@alfalab/core-components-bottom-sheet": ["../bottom-sheet/src"],
-            "@alfalab/core-components-bottom-sheet/*": ["../bottom-sheet/src/*"],
-            "@alfalab/core-components-form-control": ["../form-control/src"],
-            "@alfalab/core-components-form-control/*": ["../form-control/src/*"],
-            "@alfalab/core-components-mq": ["../mq/src"],
-            "@alfalab/core-components-mq/*": ["../mq/src/*"],
-            "@alfalab/core-components-popover": ["../popover/src"],
-            "@alfalab/core-components-popover/*": ["../popover/src/*"],
-            "@alfalab/core-components-select": ["../select/src"],
-            "@alfalab/core-components-select/*": ["../select/src/*"],
-            "@alfalab/core-components-tag": ["../tag/src"],
-            "@alfalab/core-components-tag/*": ["../tag/src/*"]
+            "@balafla/core-components-bottom-sheet": ["../bottom-sheet/src"],
+            "@balafla/core-components-bottom-sheet/*": ["../bottom-sheet/src/*"],
+            "@balafla/core-components-form-control": ["../form-control/src"],
+            "@balafla/core-components-form-control/*": ["../form-control/src/*"],
+            "@balafla/core-components-mq": ["../mq/src"],
+            "@balafla/core-components-mq/*": ["../mq/src/*"],
+            "@balafla/core-components-popover": ["../popover/src"],
+            "@balafla/core-components-popover/*": ["../popover/src/*"],
+            "@balafla/core-components-select": ["../select/src"],
+            "@balafla/core-components-select/*": ["../select/src/*"],
+            "@balafla/core-components-tag": ["../tag/src"],
+            "@balafla/core-components-tag/*": ["../tag/src/*"]
         }
     },
     "references": [

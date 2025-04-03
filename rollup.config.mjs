@@ -50,7 +50,7 @@ const sourceCopyPlugin = copy({
                         .toString()
                         .replaceAll(
                             /@import.*\/(.*)\/src\/(.*)\.css['"];/g,
-                            "@import '@alfalab/core-components-$1/src/$2.css';",
+                            "@import '@balafla/core-components-$1/src/$2.css';",
                         );
                 }
 

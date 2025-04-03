@@ -1,6 +1,5 @@
 import React from 'react';
-
-import type { BorderColorType, GapType, ShadowType } from '@alfalab/core-components-types';
+import type { BorderColorType, GapType, ShadowType } from '@balafla/core-components-types';
 
 export type UnderlayPaddingSize = Exclude<GapType, '7xl' | '8xl'>;
 export type UnderlayBorderRadius = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | '3xl';

@@ -1,5 +1,5 @@
 {
-    "name": "@alfalab/core-components-stack-context",
+    "name": "@balafla/core-components-stack-context",
     "version": "0.0.0",
     "description": "Библиотека для предоставления React Context компоненту Stack",
     "license": "MIT",

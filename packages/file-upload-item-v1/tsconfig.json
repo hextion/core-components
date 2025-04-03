@@ -5,12 +5,12 @@
     "compilerOptions": {
         "rootDir": "src",
         "paths": {
-            "@alfalab/core-components-icon-button": ["../icon-button/src"],
-            "@alfalab/core-components-icon-button/*": ["../icon-button/src/*"],
-            "@alfalab/core-components-link": ["../link/src"],
-            "@alfalab/core-components-link/*": ["../link/src/*"],
-            "@alfalab/core-components-spinner": ["../spinner/src"],
-            "@alfalab/core-components-spinner/*": ["../spinner/src/*"]
+            "@balafla/core-components-icon-button": ["../icon-button/src"],
+            "@balafla/core-components-icon-button/*": ["../icon-button/src/*"],
+            "@balafla/core-components-link": ["../link/src"],
+            "@balafla/core-components-link/*": ["../link/src/*"],
+            "@balafla/core-components-spinner": ["../spinner/src"],
+            "@balafla/core-components-spinner/*": ["../spinner/src/*"]
         }
     },
     "references": [{ "path": "../icon-button" }, { "path": "../link" }, { "path": "../spinner" }]

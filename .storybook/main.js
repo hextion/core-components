@@ -160,12 +160,12 @@ module.exports = {
         });
 
         config.plugins.unshift(
-            new NormalModuleReplacementPlugin(/^@alfalab\/core-components[-\/]/, function (
+            new NormalModuleReplacementPlugin(/^@(alfalab|balafla)\/core-components[-\/]/, function (
                 resource,
             ) {
                 resource.request = resource.request.replace(
-                    /^@alfalab\/core-components[-\/]([^\/]+)\/?(.*)/,
-                    (_, componentName, entrypoint) =>
+                    /^@(alfalab|balafla)\/core-components[-\/]([^\/]+)\/?(.*)/,
+                    (_, __, componentName, entrypoint) =>
                         process.env.BUILD_STORYBOOK_FROM_DIST === 'true'
                             ? path.join(
                                   distDir,

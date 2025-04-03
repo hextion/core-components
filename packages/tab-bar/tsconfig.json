@@ -5,12 +5,12 @@
     "compilerOptions": {
         "rootDir": "src",
         "paths": {
-            "@alfalab/core-components-indicator": ["../indicator/src"],
-            "@alfalab/core-components-indicator/*": ["../indicator/src/*"],
-            "@alfalab/core-components-shared": ["../shared/src"],
-            "@alfalab/core-components-shared/*": ["../shared/src/*"],
-            "@alfalab/core-components-typography": ["../typography/src"],
-            "@alfalab/core-components-typography/*": ["../typography/src/*"]
+            "@balafla/core-components-indicator": ["../indicator/src"],
+            "@balafla/core-components-indicator/*": ["../indicator/src/*"],
+            "@balafla/core-components-shared": ["../shared/src"],
+            "@balafla/core-components-shared/*": ["../shared/src/*"],
+            "@balafla/core-components-typography": ["../typography/src"],
+            "@balafla/core-components-typography/*": ["../typography/src/*"]
         }
     },
     "references": [{ "path": "../indicator" }, { "path": "../shared" }, { "path": "../typography" }]

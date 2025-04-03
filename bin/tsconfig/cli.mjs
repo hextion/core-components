@@ -12,7 +12,7 @@ import shell from 'shelljs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
 
-const IGNORED_PACKAGES = ['@alfalab/core-components-codemod'];
+const IGNORED_PACKAGES = ['@balafla/core-components-codemod'];
 
 /**
  * @typedef {Object} PackageInfo
@@ -187,7 +187,7 @@ function generateStorybookTsConfig() {
 
     const atomicPackages = packages
         .map(({ name }) => name)
-        .filter((name) => !(name === '@alfalab/core-components'));
+        .filter((name) => !(name === '@balafla/core-components'));
 
     storybookTsConfigTemplate.compilerOptions.paths = {
         ...storybookTsConfigTemplate.compilerOptions.paths,
@@ -207,7 +207,7 @@ function generateTestsTsConfig() {
 
     const atomicPackages = packages
         .map(({ name }) => name)
-        .filter((name) => !(name === '@alfalab/core-components'));
+        .filter((name) => !(name === '@balafla/core-components'));
 
     testsTsConfigTemplate.compilerOptions.paths = {
         ...testsTsConfigTemplate.compilerOptions.paths,
@@ -226,7 +226,7 @@ function generatePackageTsConfig({ location, name }) {
         path.join(__dirname, 'templates', 'tsconfig.package.json'),
     );
 
-    if (name === '@alfalab/core-components-mq') {
+    if (name === '@balafla/core-components-mq') {
         const srcIndex = packageTsConfigTemplate.include.findIndex((path) => path === 'src');
 
         packageTsConfigTemplate.include.splice(srcIndex + 1, 0, 'src/**/*.json');
@@ -235,10 +235,10 @@ function generatePackageTsConfig({ location, name }) {
     const { dependencies, peerDependencies } = require(path.join(location, 'package.json'));
 
     const corePackages = Object.keys({ ...dependencies, ...peerDependencies }).filter((name) =>
-        name.startsWith('@alfalab/core-components-'),
+        name.startsWith('@balafla/core-components-'),
     );
 
-    if (name === '@alfalab/core-components' || corePackages.length === 0) {
+    if (name === '@balafla/core-components' || corePackages.length === 0) {
         return packageTsConfigTemplate;
     }
 

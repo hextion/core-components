@@ -5,14 +5,14 @@
     "compilerOptions": {
         "rootDir": "src",
         "paths": {
-            "@alfalab/core-components-calendar": ["../calendar/src"],
-            "@alfalab/core-components-calendar/*": ["../calendar/src/*"],
-            "@alfalab/core-components-date-input": ["../date-input/src"],
-            "@alfalab/core-components-date-input/*": ["../date-input/src/*"],
-            "@alfalab/core-components-mq": ["../mq/src"],
-            "@alfalab/core-components-mq/*": ["../mq/src/*"],
-            "@alfalab/core-components-popover": ["../popover/src"],
-            "@alfalab/core-components-popover/*": ["../popover/src/*"]
+            "@balafla/core-components-calendar": ["../calendar/src"],
+            "@balafla/core-components-calendar/*": ["../calendar/src/*"],
+            "@balafla/core-components-date-input": ["../date-input/src"],
+            "@balafla/core-components-date-input/*": ["../date-input/src/*"],
+            "@balafla/core-components-mq": ["../mq/src"],
+            "@balafla/core-components-mq/*": ["../mq/src/*"],
+            "@balafla/core-components-popover": ["../popover/src"],
+            "@balafla/core-components-popover/*": ["../popover/src/*"]
         }
     },
     "references": [

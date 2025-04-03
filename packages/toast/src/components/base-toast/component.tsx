@@ -8,17 +8,17 @@ import React, {
 } from 'react';
 import mergeRefs from 'react-merge-refs';
 import { CSSTransition } from 'react-transition-group';
-import cn from 'classnames';
-
-import { Popover, PopoverProps } from '@alfalab/core-components-popover';
-import { Portal } from '@alfalab/core-components-portal';
-import { noop } from '@alfalab/core-components-shared';
-import { Stack } from '@alfalab/core-components-stack';
-import { stackingOrder } from '@alfalab/core-components-stack-context';
+import { Popover, PopoverProps } from '@balafla/core-components-popover';
+import { Portal } from '@balafla/core-components-portal';
+import { noop } from '@balafla/core-components-shared';
+import { Stack } from '@balafla/core-components-stack';
+import { stackingOrder } from '@balafla/core-components-stack-context';
 import {
     ToastPlate as ToastPlateComponent,
     ToastPlateProps,
-} from '@alfalab/core-components-toast-plate';
+} from '@balafla/core-components-toast-plate';
+import cn from 'classnames';
+
 import { useClickOutside, usePrevious } from '@alfalab/hooks';
 
 import styles from './index.module.css';

@@ -14,21 +14,21 @@ function getPackage(name) {
 const packages = JSON.parse(
     shell.exec(
         `lerna list \\
-            --ignore @alfalab/core-components \\
-            --ignore @alfalab/core-components-codemod \\
-            --ignore @alfalab/core-components-config \\
-            --ignore @alfalab/core-components-stack-context \\
-            --ignore @alfalab/core-components-themes \\
-            --ignore @alfalab/core-components-types \\
-            --ignore @alfalab/core-components-vars \\
+            --ignore @balafla/core-components \\
+            --ignore @balafla/core-components-codemod \\
+            --ignore @balafla/core-components-config \\
+            --ignore @balafla/core-components-stack-context \\
+            --ignore @balafla/core-components-themes \\
+            --ignore @balafla/core-components-types \\
+            --ignore @balafla/core-components-vars \\
             --json
             --all`,
         { silent: true },
     ).stdout,
 );
 
-const themesPkg = getPackage('@alfalab/core-components-themes');
-const varsPkg = getPackage('@alfalab/core-components-vars');
+const themesPkg = getPackage('@balafla/core-components-themes');
+const varsPkg = getPackage('@balafla/core-components-vars');
 
 for (const { name, version, location } of packages) {
     console.log(`=> Processing ${name}@${version}`);

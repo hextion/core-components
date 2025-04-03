@@ -5,10 +5,10 @@
     "compilerOptions": {
         "rootDir": "src",
         "paths": {
-            "@alfalab/core-components-calendar": ["../calendar/src"],
-            "@alfalab/core-components-calendar/*": ["../calendar/src/*"],
-            "@alfalab/core-components-skeleton": ["../skeleton/src"],
-            "@alfalab/core-components-skeleton/*": ["../skeleton/src/*"]
+            "@balafla/core-components-calendar": ["../calendar/src"],
+            "@balafla/core-components-calendar/*": ["../calendar/src/*"],
+            "@balafla/core-components-skeleton": ["../skeleton/src"],
+            "@balafla/core-components-skeleton/*": ["../skeleton/src/*"]
         }
     },
     "references": [{ "path": "../calendar" }, { "path": "../skeleton" }]

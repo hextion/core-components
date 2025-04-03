@@ -1,5 +1,5 @@
-import { useCoreConfig } from '@alfalab/core-components-config';
-import { isFn } from '@alfalab/core-components-shared';
+import { useCoreConfig } from '@balafla/core-components-config';
+import { isFn } from '@balafla/core-components-shared';
 
 import { useMatchMedia } from './useMatchMedia';
 

@@ -5,8 +5,8 @@
     "compilerOptions": {
         "rootDir": "src",
         "paths": {
-            "@alfalab/core-components-mq": ["../mq/src"],
-            "@alfalab/core-components-mq/*": ["../mq/src/*"]
+            "@balafla/core-components-mq": ["../mq/src"],
+            "@balafla/core-components-mq/*": ["../mq/src/*"]
         }
     },
     "references": [{ "path": "../mq" }]

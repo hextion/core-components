@@ -5,16 +5,16 @@
     "compilerOptions": {
         "rootDir": "src",
         "paths": {
-            "@alfalab/core-components-amount": ["../amount/src"],
-            "@alfalab/core-components-amount/*": ["../amount/src/*"],
-            "@alfalab/core-components-button": ["../button/src"],
-            "@alfalab/core-components-button/*": ["../button/src/*"],
-            "@alfalab/core-components-comment": ["../comment/src"],
-            "@alfalab/core-components-comment/*": ["../comment/src/*"],
-            "@alfalab/core-components-shared": ["../shared/src"],
-            "@alfalab/core-components-shared/*": ["../shared/src/*"],
-            "@alfalab/core-components-typography": ["../typography/src"],
-            "@alfalab/core-components-typography/*": ["../typography/src/*"]
+            "@balafla/core-components-amount": ["../amount/src"],
+            "@balafla/core-components-amount/*": ["../amount/src/*"],
+            "@balafla/core-components-button": ["../button/src"],
+            "@balafla/core-components-button/*": ["../button/src/*"],
+            "@balafla/core-components-comment": ["../comment/src"],
+            "@balafla/core-components-comment/*": ["../comment/src/*"],
+            "@balafla/core-components-shared": ["../shared/src"],
+            "@balafla/core-components-shared/*": ["../shared/src/*"],
+            "@balafla/core-components-typography": ["../typography/src"],
+            "@balafla/core-components-typography/*": ["../typography/src/*"]
         }
     },
     "references": [

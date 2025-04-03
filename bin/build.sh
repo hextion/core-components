@@ -13,24 +13,24 @@ echo "start build on $CONCURRENCY parallel process"
 # собираю css пакеты
 copy_css="yarn copyfiles -u 1 \"src/**/*.{css,js}\" dist"
 lerna exec \
-    --scope @alfalab/core-components-vars \
-    --scope @alfalab/core-components-themes \
+    --scope @balafla/core-components-vars \
+    --scope @balafla/core-components-themes \
     -- "$copy_css"
 
 # собираю пакет themes
-lerna exec --scope @alfalab/core-components-themes -- node $(pwd)/bin/build-themes.mjs
+lerna exec --scope @balafla/core-components-themes -- node $(pwd)/bin/build-themes.mjs
 
 # экспорт CSS-переменных в JS-переменные
-lerna exec --scope @alfalab/core-components-vars -- node $(pwd)/bin/export-css-custom-properties-as-js-vars.mjs
+lerna exec --scope @balafla/core-components-vars -- node $(pwd)/bin/export-css-custom-properties-as-js-vars.mjs
 
 # собираю все подпакеты с компонентами
 lerna exec --concurrency $CONCURRENCY \
-    --ignore @alfalab/core-components-codemod \
+    --ignore @balafla/core-components-codemod \
     -- rollup -c $(pwd)/rollup.config.mjs --silent
 
 # удаляем неиспользуемые css-переменные из сборки во всех подпакетах
 lerna exec --concurrency $CONCURRENCY \
-    --ignore @alfalab/core-components-grid \
-    --ignore @alfalab/core-components-themes \
-    --ignore @alfalab/core-components-vars \
+    --ignore @balafla/core-components-grid \
+    --ignore @balafla/core-components-themes \
+    --ignore @balafla/core-components-vars \
     -- node $(pwd)/bin/purgecss.mjs

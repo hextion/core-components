@@ -5,18 +5,18 @@
     "compilerOptions": {
         "rootDir": "src",
         "paths": {
-            "@alfalab/core-components-button": ["../button/src"],
-            "@alfalab/core-components-button/*": ["../button/src/*"],
-            "@alfalab/core-components-code-input": ["../code-input/src"],
-            "@alfalab/core-components-code-input/*": ["../code-input/src/*"],
-            "@alfalab/core-components-link": ["../link/src"],
-            "@alfalab/core-components-link/*": ["../link/src/*"],
-            "@alfalab/core-components-mq": ["../mq/src"],
-            "@alfalab/core-components-mq/*": ["../mq/src/*"],
-            "@alfalab/core-components-spinner": ["../spinner/src"],
-            "@alfalab/core-components-spinner/*": ["../spinner/src/*"],
-            "@alfalab/core-components-typography": ["../typography/src"],
-            "@alfalab/core-components-typography/*": ["../typography/src/*"]
+            "@balafla/core-components-button": ["../button/src"],
+            "@balafla/core-components-button/*": ["../button/src/*"],
+            "@balafla/core-components-code-input": ["../code-input/src"],
+            "@balafla/core-components-code-input/*": ["../code-input/src/*"],
+            "@balafla/core-components-link": ["../link/src"],
+            "@balafla/core-components-link/*": ["../link/src/*"],
+            "@balafla/core-components-mq": ["../mq/src"],
+            "@balafla/core-components-mq/*": ["../mq/src/*"],
+            "@balafla/core-components-spinner": ["../spinner/src"],
+            "@balafla/core-components-spinner/*": ["../spinner/src/*"],
+            "@balafla/core-components-typography": ["../typography/src"],
+            "@balafla/core-components-typography/*": ["../typography/src/*"]
         }
     },
     "references": [

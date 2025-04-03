@@ -5,18 +5,18 @@
     "compilerOptions": {
         "rootDir": "src",
         "paths": {
-            "@alfalab/core-components-backdrop": ["../backdrop/src"],
-            "@alfalab/core-components-backdrop/*": ["../backdrop/src/*"],
-            "@alfalab/core-components-global-store": ["../global-store/src"],
-            "@alfalab/core-components-global-store/*": ["../global-store/src/*"],
-            "@alfalab/core-components-portal": ["../portal/src"],
-            "@alfalab/core-components-portal/*": ["../portal/src/*"],
-            "@alfalab/core-components-shared": ["../shared/src"],
-            "@alfalab/core-components-shared/*": ["../shared/src/*"],
-            "@alfalab/core-components-stack": ["../stack/src"],
-            "@alfalab/core-components-stack/*": ["../stack/src/*"],
-            "@alfalab/core-components-stack-context": ["../stack-context/src"],
-            "@alfalab/core-components-stack-context/*": ["../stack-context/src/*"]
+            "@balafla/core-components-backdrop": ["../backdrop/src"],
+            "@balafla/core-components-backdrop/*": ["../backdrop/src/*"],
+            "@balafla/core-components-global-store": ["../global-store/src"],
+            "@balafla/core-components-global-store/*": ["../global-store/src/*"],
+            "@balafla/core-components-portal": ["../portal/src"],
+            "@balafla/core-components-portal/*": ["../portal/src/*"],
+            "@balafla/core-components-shared": ["../shared/src"],
+            "@balafla/core-components-shared/*": ["../shared/src/*"],
+            "@balafla/core-components-stack": ["../stack/src"],
+            "@balafla/core-components-stack/*": ["../stack/src/*"],
+            "@balafla/core-components-stack-context": ["../stack-context/src"],
+            "@balafla/core-components-stack-context/*": ["../stack-context/src/*"]
         }
     },
     "references": [

@@ -5,10 +5,10 @@
     "compilerOptions": {
         "rootDir": "src",
         "paths": {
-            "@alfalab/core-components-shared": ["../shared/src"],
-            "@alfalab/core-components-shared/*": ["../shared/src/*"],
-            "@alfalab/core-components-spinner": ["../spinner/src"],
-            "@alfalab/core-components-spinner/*": ["../spinner/src/*"]
+            "@balafla/core-components-shared": ["../shared/src"],
+            "@balafla/core-components-shared/*": ["../shared/src/*"],
+            "@balafla/core-components-spinner": ["../spinner/src"],
+            "@balafla/core-components-spinner/*": ["../spinner/src/*"]
         }
     },
     "references": [{ "path": "../shared" }, { "path": "../spinner" }]

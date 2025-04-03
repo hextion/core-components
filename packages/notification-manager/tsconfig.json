@@ -5,14 +5,14 @@
     "compilerOptions": {
         "rootDir": "src",
         "paths": {
-            "@alfalab/core-components-notification": ["../notification/src"],
-            "@alfalab/core-components-notification/*": ["../notification/src/*"],
-            "@alfalab/core-components-portal": ["../portal/src"],
-            "@alfalab/core-components-portal/*": ["../portal/src/*"],
-            "@alfalab/core-components-stack": ["../stack/src"],
-            "@alfalab/core-components-stack/*": ["../stack/src/*"],
-            "@alfalab/core-components-stack-context": ["../stack-context/src"],
-            "@alfalab/core-components-stack-context/*": ["../stack-context/src/*"]
+            "@balafla/core-components-notification": ["../notification/src"],
+            "@balafla/core-components-notification/*": ["../notification/src/*"],
+            "@balafla/core-components-portal": ["../portal/src"],
+            "@balafla/core-components-portal/*": ["../portal/src/*"],
+            "@balafla/core-components-stack": ["../stack/src"],
+            "@balafla/core-components-stack/*": ["../stack/src/*"],
+            "@balafla/core-components-stack-context": ["../stack-context/src"],
+            "@balafla/core-components-stack-context/*": ["../stack-context/src/*"]
         }
     },
     "references": [

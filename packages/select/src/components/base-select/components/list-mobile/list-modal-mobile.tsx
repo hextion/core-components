@@ -1,8 +1,7 @@
 import React, { FC, ReactNode, RefObject } from 'react';
 import mergeRefs from 'react-merge-refs';
+import { getDataTestId } from '@balafla/core-components-shared';
 import cn from 'classnames';
-
-import { getDataTestId } from '@alfalab/core-components-shared';
 
 import { OptionShape } from '../../../../typings';
 

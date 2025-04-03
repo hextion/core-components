@@ -4,8 +4,8 @@
 export const coreComponentsResolver = (buildPath) => ({
     name: 'core-components-resolver',
     resolveId: (id) => {
-        if (id.includes('@alfalab/core-components')) {
-            const m = /(@alfalab\/core-components-[^/]+)(.*)?$/.exec(id);
+        if (id.includes('@balafla/core-components')) {
+            const m = /(@balafla\/core-components-[^/]+)(.*)?$/.exec(id);
             if (m) {
                 const componentName = m[1];
                 const emtryPoint = m[2] ?? '';
@@ -29,7 +29,7 @@ export const externalsResolver = (externals) => ({
 });
 
 /**
- * Заменяет импорты типов в d.ts с packages/{packageName}/src/* на @alfalab/core-components-{packageName}/*
+ * Заменяет импорты типов в d.ts с packages/{packageName}/src/* на @balafla/core-components-{packageName}/*
  */
 export const packagesTypingResolver = () => ({
     name: 'packages-typings-resolver',
@@ -46,7 +46,7 @@ export const packagesTypingResolver = () => ({
 
                     bundles[bundleName].source = source.replaceAll(
                         re,
-                        'import($1@alfalab/core-components-$2$3$4)',
+                        'import($1@balafla/core-components-$2$3$4)',
                     );
                 }
             }

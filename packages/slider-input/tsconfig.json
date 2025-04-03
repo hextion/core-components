@@ -5,10 +5,10 @@
     "compilerOptions": {
         "rootDir": "src",
         "paths": {
-            "@alfalab/core-components-input": ["../input/src"],
-            "@alfalab/core-components-input/*": ["../input/src/*"],
-            "@alfalab/core-components-slider": ["../slider/src"],
-            "@alfalab/core-components-slider/*": ["../slider/src/*"]
+            "@balafla/core-components-input": ["../input/src"],
+            "@balafla/core-components-input/*": ["../input/src/*"],
+            "@balafla/core-components-slider": ["../slider/src"],
+            "@balafla/core-components-slider/*": ["../slider/src/*"]
         }
     },
     "references": [{ "path": "../input" }, { "path": "../slider" }]

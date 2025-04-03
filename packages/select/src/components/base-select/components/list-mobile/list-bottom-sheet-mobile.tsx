@@ -1,6 +1,5 @@
 import React, { FC, ReactNode, RefObject } from 'react';
-
-import { getDataTestId } from '@alfalab/core-components-shared';
+import { getDataTestId } from '@balafla/core-components-shared';
 
 import { OptionShape } from '../../../../typings';
 

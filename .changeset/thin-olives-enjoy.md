@@ -1,5 +1,5 @@
 ---
-'@alfalab/core-components-stack-context': major
+'@balafla/core-components-stack-context': major
 ---
 
-Пакет `@alfalab/stack-context` перенесен в `@alfalab/core-components-stack-context`. При обновлении необходимо заменить `as-is`.
+Пакет `@alfalab/stack-context` перенесен в `@balafla/core-components-stack-context`. При обновлении необходимо заменить `as-is`.

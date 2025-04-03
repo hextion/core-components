@@ -5,20 +5,20 @@
     "compilerOptions": {
         "rootDir": "src",
         "paths": {
-            "@alfalab/core-components-form-control": ["../form-control/src"],
-            "@alfalab/core-components-form-control/*": ["../form-control/src/*"],
-            "@alfalab/core-components-input": ["../input/src"],
-            "@alfalab/core-components-input/*": ["../input/src/*"],
-            "@alfalab/core-components-mq": ["../mq/src"],
-            "@alfalab/core-components-mq/*": ["../mq/src/*"],
-            "@alfalab/core-components-popover": ["../popover/src"],
-            "@alfalab/core-components-popover/*": ["../popover/src/*"],
-            "@alfalab/core-components-select": ["../select/src"],
-            "@alfalab/core-components-select/*": ["../select/src/*"],
-            "@alfalab/core-components-shared": ["../shared/src"],
-            "@alfalab/core-components-shared/*": ["../shared/src/*"],
-            "@alfalab/core-components-status-badge": ["../status-badge/src"],
-            "@alfalab/core-components-status-badge/*": ["../status-badge/src/*"]
+            "@balafla/core-components-form-control": ["../form-control/src"],
+            "@balafla/core-components-form-control/*": ["../form-control/src/*"],
+            "@balafla/core-components-input": ["../input/src"],
+            "@balafla/core-components-input/*": ["../input/src/*"],
+            "@balafla/core-components-mq": ["../mq/src"],
+            "@balafla/core-components-mq/*": ["../mq/src/*"],
+            "@balafla/core-components-popover": ["../popover/src"],
+            "@balafla/core-components-popover/*": ["../popover/src/*"],
+            "@balafla/core-components-select": ["../select/src"],
+            "@balafla/core-components-select/*": ["../select/src/*"],
+            "@balafla/core-components-shared": ["../shared/src"],
+            "@balafla/core-components-shared/*": ["../shared/src/*"],
+            "@balafla/core-components-status-badge": ["../status-badge/src"],
+            "@balafla/core-components-status-badge/*": ["../status-badge/src/*"]
         }
     },
     "references": [

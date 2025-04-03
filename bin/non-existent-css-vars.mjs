@@ -5,9 +5,9 @@ import shell from 'shelljs';
 import * as process from 'node:process';
 
 const IGNORED_PACKAGES = [
-    '@alfalab/core-components-bank-card',
-    '@alfalab/core-components-themes',
-    '@alfalab/core-components-vars',
+    '@balafla/core-components-bank-card',
+    '@balafla/core-components-themes',
+    '@balafla/core-components-vars',
 ];
 
 const packages = JSON.parse(

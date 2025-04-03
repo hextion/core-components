@@ -1,13 +1,12 @@
 import React, { FC, ForwardRefExoticComponent, RefAttributes } from 'react';
-
-import type { BottomSheetProps } from '@alfalab/core-components-bottom-sheet';
+import type { BottomSheetProps } from '@balafla/core-components-bottom-sheet';
 import type {
     ModalContentProps,
     ModalFooterProps,
     ModalHeaderProps,
-} from '@alfalab/core-components-modal/shared';
-import type { ModalMobileProps } from '@alfalab/core-components-modal/typings';
-import type { PopoverProps } from '@alfalab/core-components-popover';
+} from '@balafla/core-components-modal/shared';
+import type { ModalMobileProps } from '@balafla/core-components-modal/typings';
+import type { PopoverProps } from '@balafla/core-components-popover';
 
 import type {
     AdditionalMobileProps,

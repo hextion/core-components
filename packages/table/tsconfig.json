@@ -5,12 +5,12 @@
     "compilerOptions": {
         "rootDir": "src",
         "paths": {
-            "@alfalab/core-components-button": ["../button/src"],
-            "@alfalab/core-components-button/*": ["../button/src/*"],
-            "@alfalab/core-components-pagination": ["../pagination/src"],
-            "@alfalab/core-components-pagination/*": ["../pagination/src/*"],
-            "@alfalab/core-components-select": ["../select/src"],
-            "@alfalab/core-components-select/*": ["../select/src/*"]
+            "@balafla/core-components-button": ["../button/src"],
+            "@balafla/core-components-button/*": ["../button/src/*"],
+            "@balafla/core-components-pagination": ["../pagination/src"],
+            "@balafla/core-components-pagination/*": ["../pagination/src/*"],
+            "@balafla/core-components-select": ["../select/src"],
+            "@balafla/core-components-select/*": ["../select/src/*"]
         }
     },
     "references": [{ "path": "../button" }, { "path": "../pagination" }, { "path": "../select" }]

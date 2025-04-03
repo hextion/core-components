@@ -4,18 +4,18 @@ const shell = require('shelljs');
 
 const lernaList = shell.exec(
     `lerna list \\
-        --ignore @alfalab/core-components \\
-        --ignore @alfalab/core-components-codemod \\
-        --ignore @alfalab/core-components-vars \\
-        --ignore @alfalab/core-components-themes \\
-        --ignore @alfalab/core-components-scrollbar \\
+        --ignore @balafla/core-components \\
+        --ignore @balafla/core-components-codemod \\
+        --ignore @balafla/core-components-vars \\
+        --ignore @balafla/core-components-themes \\
+        --ignore @balafla/core-components-scrollbar \\
         --json
         --all`,
     { silent: true },
 );
 
 const packageList = JSON.parse(lernaList.stdout).map(({ name }) =>
-    name.replace('@alfalab/core-components-', ''),
+    name.replace('@balafla/core-components-', ''),
 );
 
 const options = {

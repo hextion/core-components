@@ -5,22 +5,22 @@
     "compilerOptions": {
         "rootDir": "src",
         "paths": {
-            "@alfalab/core-components-badge": ["../badge/src"],
-            "@alfalab/core-components-badge/*": ["../badge/src/*"],
-            "@alfalab/core-components-icon-button": ["../icon-button/src"],
-            "@alfalab/core-components-icon-button/*": ["../icon-button/src/*"],
-            "@alfalab/core-components-keyboard-focusable": ["../keyboard-focusable/src"],
-            "@alfalab/core-components-keyboard-focusable/*": ["../keyboard-focusable/src/*"],
-            "@alfalab/core-components-mq": ["../mq/src"],
-            "@alfalab/core-components-mq/*": ["../mq/src/*"],
-            "@alfalab/core-components-picker-button": ["../picker-button/src"],
-            "@alfalab/core-components-picker-button/*": ["../picker-button/src/*"],
-            "@alfalab/core-components-shared": ["../shared/src"],
-            "@alfalab/core-components-shared/*": ["../shared/src/*"],
-            "@alfalab/core-components-skeleton": ["../skeleton/src"],
-            "@alfalab/core-components-skeleton/*": ["../skeleton/src/*"],
-            "@alfalab/core-components-tag": ["../tag/src"],
-            "@alfalab/core-components-tag/*": ["../tag/src/*"]
+            "@balafla/core-components-badge": ["../badge/src"],
+            "@balafla/core-components-badge/*": ["../badge/src/*"],
+            "@balafla/core-components-icon-button": ["../icon-button/src"],
+            "@balafla/core-components-icon-button/*": ["../icon-button/src/*"],
+            "@balafla/core-components-keyboard-focusable": ["../keyboard-focusable/src"],
+            "@balafla/core-components-keyboard-focusable/*": ["../keyboard-focusable/src/*"],
+            "@balafla/core-components-mq": ["../mq/src"],
+            "@balafla/core-components-mq/*": ["../mq/src/*"],
+            "@balafla/core-components-picker-button": ["../picker-button/src"],
+            "@balafla/core-components-picker-button/*": ["../picker-button/src/*"],
+            "@balafla/core-components-shared": ["../shared/src"],
+            "@balafla/core-components-shared/*": ["../shared/src/*"],
+            "@balafla/core-components-skeleton": ["../skeleton/src"],
+            "@balafla/core-components-skeleton/*": ["../skeleton/src/*"],
+            "@balafla/core-components-tag": ["../tag/src"],
+            "@balafla/core-components-tag/*": ["../tag/src/*"]
         }
     },
     "references": [

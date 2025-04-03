@@ -5,24 +5,24 @@
     "compilerOptions": {
         "rootDir": "src",
         "paths": {
-            "@alfalab/core-components-backdrop": ["../backdrop/src"],
-            "@alfalab/core-components-backdrop/*": ["../backdrop/src/*"],
-            "@alfalab/core-components-base-modal": ["../base-modal/src"],
-            "@alfalab/core-components-base-modal/*": ["../base-modal/src/*"],
-            "@alfalab/core-components-button": ["../button/src"],
-            "@alfalab/core-components-button/*": ["../button/src/*"],
-            "@alfalab/core-components-mq": ["../mq/src"],
-            "@alfalab/core-components-mq/*": ["../mq/src/*"],
-            "@alfalab/core-components-navigation-bar-private": ["../navigation-bar-private/src"],
-            "@alfalab/core-components-navigation-bar-private/*": [
+            "@balafla/core-components-backdrop": ["../backdrop/src"],
+            "@balafla/core-components-backdrop/*": ["../backdrop/src/*"],
+            "@balafla/core-components-base-modal": ["../base-modal/src"],
+            "@balafla/core-components-base-modal/*": ["../base-modal/src/*"],
+            "@balafla/core-components-button": ["../button/src"],
+            "@balafla/core-components-button/*": ["../button/src/*"],
+            "@balafla/core-components-mq": ["../mq/src"],
+            "@balafla/core-components-mq/*": ["../mq/src/*"],
+            "@balafla/core-components-navigation-bar-private": ["../navigation-bar-private/src"],
+            "@balafla/core-components-navigation-bar-private/*": [
                 "../navigation-bar-private/src/*"
             ],
-            "@alfalab/core-components-scrollbar": ["../scrollbar/src"],
-            "@alfalab/core-components-scrollbar/*": ["../scrollbar/src/*"],
-            "@alfalab/core-components-shared": ["../shared/src"],
-            "@alfalab/core-components-shared/*": ["../shared/src/*"],
-            "@alfalab/core-components-typography": ["../typography/src"],
-            "@alfalab/core-components-typography/*": ["../typography/src/*"]
+            "@balafla/core-components-scrollbar": ["../scrollbar/src"],
+            "@balafla/core-components-scrollbar/*": ["../scrollbar/src/*"],
+            "@balafla/core-components-shared": ["../shared/src"],
+            "@balafla/core-components-shared/*": ["../shared/src/*"],
+            "@balafla/core-components-typography": ["../typography/src"],
+            "@balafla/core-components-typography/*": ["../typography/src/*"]
         }
     },
     "references": [

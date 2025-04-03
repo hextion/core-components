@@ -5,10 +5,10 @@
     "compilerOptions": {
         "rootDir": "src",
         "paths": {
-            "@alfalab/core-components-config": ["../config/src"],
-            "@alfalab/core-components-config/*": ["../config/src/*"],
-            "@alfalab/core-components-shared": ["../shared/src"],
-            "@alfalab/core-components-shared/*": ["../shared/src/*"]
+            "@balafla/core-components-config": ["../config/src"],
+            "@balafla/core-components-config/*": ["../config/src/*"],
+            "@balafla/core-components-shared": ["../shared/src"],
+            "@balafla/core-components-shared/*": ["../shared/src/*"]
         }
     },
     "references": [{ "path": "../config" }, { "path": "../shared" }]

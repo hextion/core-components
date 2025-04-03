@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
+import { createPaddingStyle, getDataTestId } from '@balafla/core-components-shared';
+import type { PaddingType } from '@balafla/core-components-types';
 import cn from 'classnames';
-
-import { createPaddingStyle, getDataTestId } from '@alfalab/core-components-shared';
-import type { PaddingType } from '@alfalab/core-components-types';
 
 import { SystemMessageContext } from '../../Context';
 
