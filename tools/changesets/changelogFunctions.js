@@ -1,6 +1,6 @@
 const { getInfo } = require('@changesets/get-github-info');
 
-const repo = 'core-ds/core-components';
+const repo = 'hextion/core-components';
 
 const getLinesFromSummary = (summary, prLink, showPrLink = true) => {
     let returnVal = `<sup><time>${new Date().toLocaleDateString('ru-RU')}</time></sup>\n\n`;
