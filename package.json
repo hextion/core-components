@@ -36,7 +36,7 @@
         "tsconfig": "node bin/tsconfig/cli.mjs",
         "write-vars-and-themes-version": "node bin/write-vars-and-themes-version.mjs",
         "non-existent-css-vars": "node bin/non-existent-css-vars.mjs",
-        "release:snapshot": "yarn build && yarn changeset publish --no-git-tag",
+        "release:snapshot": "yarn build && yarn changeset publish --tag snapshot --no-git-tag",
         "version-packages:snapshot": "yarn changeset version --snapshot snapshot && yarn write-vars-and-themes-version"
     },
     "browserslist": {
