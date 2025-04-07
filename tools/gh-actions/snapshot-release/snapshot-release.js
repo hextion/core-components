@@ -21,7 +21,7 @@ module.exports = async ({ core, exec, inputs }) => {
         failOnStdErr: true,
     });
     const publishedPackages = publishResult.stdout.split('\n').reduce((packages, line) => {
-        const match = line.match(/^(@[^/\s]+\/[^@]+|[^/\s]+)@([^\s]+)$/);
+        const match = line.match(/^🦋\s+(@[^/\s]+\/[^@]+|[^/\s]+)@([^\s]+)$/);
 
         if (match) {
             const [, name, version] = match;
