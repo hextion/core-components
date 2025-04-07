@@ -30,12 +30,14 @@
         "clean": "rimraf packages/*/{*.tsbuildinfo,dist,.rollup.cache} {dist,build} packages/**/__diff_output__ .storybook/public/images/*preview-snap.png package-sizes.json",
         "cm": "git-cz",
         "release": "yarn build && yarn changeset publish",
-        "version-packages": "yarn changeset version && node bin/write-vars-and-themes-version.mjs",
+        "version-packages": "yarn changeset version && yarn write-vars-and-themes-version",
         "analyze-package-sizes": "node bin/analyze-package-sizes.mjs",
         "generate-dark-colors": " node bin/dark-colors-generator.mjs",
         "tsconfig": "node bin/tsconfig/cli.mjs",
         "write-vars-and-themes-version": "node bin/write-vars-and-themes-version.mjs",
-        "non-existent-css-vars": "node bin/non-existent-css-vars.mjs"
+        "non-existent-css-vars": "node bin/non-existent-css-vars.mjs",
+        "release:snapshot": "yarn build && yarn changeset publish --no-git-tag",
+        "version-packages:snapshot": "yarn changeset version --snapshot snapshot && yarn write-vars-and-themes-version"
     },
     "browserslist": {
         "production": [
