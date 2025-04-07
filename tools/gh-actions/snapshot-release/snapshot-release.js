@@ -1,4 +1,4 @@
-module.exports = async ({ core, inputs }) => {
+module.exports = async ({ core, exec, inputs }) => {
     const { default: readChangesets } = await import('@changesets/read');
 
     const changesets = await readChangesets(process.cwd());
