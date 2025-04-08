@@ -10,7 +10,7 @@ module.exports = async ({ core, exec, inputs }) => {
     });
 
     if (changesets.length === 0) {
-        core.info("Didn't find any changeset. Nothing to publish");
+        core.warning("Didn't find any changeset. Nothing to publish");
 
         core.setOutput('published', 'false');
 
@@ -21,7 +21,7 @@ module.exports = async ({ core, exec, inputs }) => {
         const versionScript = inputs['version'];
         const [versionCmd, ...versionCmdArgs] = versionScript.split(/\s+/);
 
-        await exec.exec(versionCmd, versionCmdArgs, { failOnStdErr: true });
+        await exec.exec(versionCmd, versionCmdArgs);
     });
 
     await core.group('Setup .npmrc', async () => {
@@ -59,21 +59,38 @@ module.exports = async ({ core, exec, inputs }) => {
     const publishedPackages = await core.group('Publishing packages', async () => {
         const publishScript = inputs['publish'];
         const [publishCmd, ...publishCmdArgs] = publishScript.split(/\s+/);
-        const publishResult = await exec.getExecOutput(publishCmd, publishCmdArgs, {
-            failOnStdErr: true,
-        });
+        const { stdout } = await exec.getExecOutput(publishCmd, publishCmdArgs);
 
-        return publishResult.stdout.split('\n').reduce((packages, line) => {
-            const match = line.match(/^🦋\s+(@[^/\s]+\/[^@]+|[^/\s]+)@([^\s]+)$/);
+        const successText = 'packages published successfully:';
+        const startIndex = stdout.indexOf(successText);
 
-            if (match) {
-                const [, name, version] = match;
+        if (startIndex === -1) {
+            core.warning('No packages published successfully');
 
-                packages.push({ name, version });
-            }
+            return [];
+        }
 
-            return packages;
-        }, []);
+        const failedText = 'packages failed to publish:';
+        let endIndex = stdout.indexOf(failedText);
+
+        if (endIndex === -1) {
+            endIndex = stdout.length;
+        }
+
+        return stdout
+            .slice(startIndex, endIndex)
+            .split('\n')
+            .reduce((packages, line) => {
+                const match = line.match(/^🦋\s+(@[^/\s]+\/[^@]+|[^/\s]+)@([^\s]+)$/);
+
+                if (match) {
+                    const [, name, version] = match;
+
+                    packages.push({ name, version });
+                }
+
+                return packages;
+            }, []);
     });
 
     core.setOutput('published', JSON.stringify(publishedPackages.length > 0));
