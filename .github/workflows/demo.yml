@@ -81,7 +81,7 @@ jobs:
         name: deploy
         runs-on: ubuntu-latest
         needs: [build, params]
-        if: ${{ github.repository == 'core-ds/core-components' }}
+        if: ${{ github.repository == 'hextion/core-components' }}
         outputs:
             url: ${{ steps.url.outputs.result }}
         steps:

@@ -7,7 +7,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
     snapshot-release:
         name: snapshot release
-        if: ${{ github.repository == 'core-ds/core-components' }}
+        if: ${{ github.repository == 'hextion/core-components' }}
         runs-on: ubuntu-latest
         outputs:
             published: ${{ steps.snapshot-release.outputs.published }}
