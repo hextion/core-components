@@ -12,7 +12,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
     release:
         name: release
-        if: ${{ github.repository == 'hextion/core-components' }}
+        if: ${{ github.repository == 'core-ds/core-components' }}
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
