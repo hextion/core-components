@@ -23,7 +23,6 @@ jobs:
                   version: 'yarn version-packages:snapshot'
                   publish: 'yarn release:snapshot'
               env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     pull-request:
