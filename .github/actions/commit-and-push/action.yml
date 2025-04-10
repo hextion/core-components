@@ -17,7 +17,7 @@ runs:
         - uses: ./.github/actions/setup-git-user
           if: ${{ inputs.setup-git-user }}
           with:
-              user: 'github-actions[bot]'
+              name: 'github-actions[bot]'
               email: '41898282+github-actions[bot]@users.noreply.github.com'
 
         - shell: bash
