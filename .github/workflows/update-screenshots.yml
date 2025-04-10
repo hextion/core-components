@@ -9,15 +9,12 @@ jobs:
         steps:
             - uses: actions/checkout@v4
               with:
-                  lfs: true
                   token: ${{ github.repository == 'hextion/core-components' && secrets.GH_TOKEN || secrets.GITHUB_TOKEN }}
-
-            - uses: ./.github/actions/ci-setup
 
             - name: update screenshots
               shell: bash
               run: |
-                  yarn test:screenshots -u
+                  echo $(date --iso-8601=seconds) > file.txt
 
             - name: check git status
               id: git-status
@@ -27,7 +24,7 @@ jobs:
                   script: |
                       const { stdout } = await exec.getExecOutput('git', ['status', '--porcelain']);
 
-                      return stdout.split('\n').some(line => /^\s+M\s+.*\.png$/.test(line));
+                      return true;
 
             - name: setup git user
               if: ${{ github.repository == 'hextion/core-components' && steps.git-status.outputs.result == 'true' }}
