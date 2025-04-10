@@ -9,6 +9,8 @@ jobs:
         if: ${{ startsWith(github.ref, 'refs/heads/') }}
         steps:
             - uses: actions/checkout@v4
+              with:
+                token: ${{ secrets.GITHUB_TOKEN }}
 
             - name: update screenshots
               shell: bash
@@ -30,5 +32,4 @@ jobs:
               if: ${{ steps.git-status.outputs.result == 'true' }}
               uses: ./.github/actions/commit-and-push
               with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
                   message: 'test: updated screenshots'

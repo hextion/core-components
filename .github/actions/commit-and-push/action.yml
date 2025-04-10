@@ -6,14 +6,13 @@ inputs:
         required: true
     github-token:
         description: The GitHub token
-        required: true
+        required: false
 
 runs:
     using: composite
     steps:
         - uses: actions/github-script@v7
           with:
-              github-token: ${{ inputs.github-token }}
               script: |
                   const run = require('./tools/gh-actions/commit-and-push/main.js');
                   const inputs = ${{ toJSON(inputs) }};
