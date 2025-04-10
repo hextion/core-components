@@ -6,6 +6,7 @@ jobs:
     update:
         name: update screenshots
         runs-on: ubuntu-latest
+        if: ${{ startsWith(github.ref, 'refs/heads/') }}
         steps:
             - uses: actions/checkout@v4
               with:
@@ -30,12 +31,23 @@ jobs:
 
             - name: update branch
               if: ${{ steps.git-status.outputs.result == 'true' }}
-              shell: bash
-              run: |
-                  git config url.'https://github-actions[bot]:${{ secrets.GITHUB_TOKEN }}@github.com/'.insteadOf https://github.com/
-                  git config user.name 'github-actions[bot]'
-                  git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+              uses: actions/github-script@v7
+              with:
+                  script: |
+                      await exec.exec('git', ['config', 'user.name', `"github-actions[bot]"`]);
 
-                  git add .
-                  git commit -n -m "test: updated screenshots"
-                  git push
+                      await exec.exec('git', [
+                          'config',
+                          'user.email',
+                          `"41898282+github-actions[bot]@users.noreply.github.com"`,
+                      ]);
+
+                      await exec.exec('git', ['add', '.']);
+
+                      const message = 'test: updated screenshots';
+
+                      await exec.exec('git', ['commit', '-n', '-m', message]);
+
+                      const branch = context.ref.replace('refs/heads/', '');
+
+                      await exec.exec('git', ['push', 'origin', `HEAD:${branch}`]);
