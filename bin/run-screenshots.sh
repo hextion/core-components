@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PLAYWRIGHT_VERSION=1.33.0
+PLAYWRIGHT_VERSION=1.51.1
 CONTAINER_NAME='playwright-'$PLAYWRIGHT_VERSION''
 
 check_error () {

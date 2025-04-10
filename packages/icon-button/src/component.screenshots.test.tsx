@@ -1,4 +1,4 @@
-import { Page } from 'playwright';
+import { Page } from '@playwright/test';
 import { setupScreenshotTesting, generateTestCases, createPreview } from '../../screenshot-utils';
 
 const screenshotTesting = setupScreenshotTesting({
