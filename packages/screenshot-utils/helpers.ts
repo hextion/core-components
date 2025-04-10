@@ -11,7 +11,7 @@ import {
     Route,
     Request,
     BrowserContextOptions,
-} from 'playwright';
+} from '@playwright/test';
 import axios from 'axios';
 import { MatchImageSnapshotOptions } from 'jest-image-snapshot';
 import kebab from 'lodash/kebabCase';
@@ -46,7 +46,7 @@ export type MatchHtmlParams = {
     page: Page;
     context?: BrowserContext;
     css?: string;
-    expect: any;
+    expect: typeof expect;
     matchImageSnapshotOptions?: MatchImageSnapshotOptions;
     screenshotOpts?: ScreenshotOpts;
     evaluate?: EvaluateFn;

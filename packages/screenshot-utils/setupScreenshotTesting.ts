@@ -1,4 +1,4 @@
-import { Browser, BrowserContext, chromium, Page } from 'playwright';
+import { Browser, BrowserContext, chromium, Page } from '@playwright/test';
 
 import { defaultViewport, matchHtml, MatchHtmlParams } from './helpers';
 
