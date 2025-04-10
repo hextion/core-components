@@ -23,7 +23,7 @@ jobs:
                           const { owner, repo } = context.repo;
                           const per_page = 30;
 
-                          const result = await github.rest.actions.listArtifactsForRepo({
+                          const { data } = await github.rest.actions.listArtifactsForRepo({
                               owner,
                               repo,
                               page,
@@ -31,18 +31,16 @@ jobs:
                               name: 'build',
                           });
 
-                          core.info(JSON.stringify(result));
-
-                          const run_id = result.artifacts
+                          const run_id = data.artifacts
                               .filter((artifact) => !artifact.expired)
-                              .map(artifact => artifact.workflow_run.head_sha)
+                              .map((artifact) => artifact.workflow_run.head_sha)
                               .find((head_sha) => head_sha === context.sha);
 
                           if (run_id) {
                               return run_id;
                           }
 
-                          if (page * per_page < result.total_count) {
+                          if (page * per_page < data.total_count) {
                               return getRunId(page + 1);
                           }
 
