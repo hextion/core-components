@@ -15,7 +15,7 @@ runs:
     using: composite
     steps:
         - uses: ./.github/actions/setup-git-user
-          if: ${{ inputs.setup-git-user == true }}
+          if: ${{ inputs.setup-git-user }}
           with:
               name: 'github-actions[bot]'
               email: '41898282+github-actions[bot]@users.noreply.github.com'
