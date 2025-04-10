@@ -31,6 +31,8 @@ jobs:
                               name: 'build',
                           });
 
+                          core.info(JSON.stringify(result));
+
                           const run_id = result.artifacts
                               .filter((artifact) => !artifact.expired)
                               .map(artifact => artifact.workflow_run.head_sha)
