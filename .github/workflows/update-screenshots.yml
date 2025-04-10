@@ -7,13 +7,14 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    run_id:
+    artifact:
+        name: find artifact
         runs-on: ubuntu-latest
         if: ${{ github.repository == 'hextion/core-components' }}
         outputs:
-            run_id: ${{ steps.run_id.outputs.result }}
+            workflow_run_id: ${{ steps.find.outputs.result }}
         steps:
-            - id: run_id
+            - id: find
               uses: actions/github-script@v7
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -31,13 +32,12 @@ jobs:
                               name: 'build',
                           });
 
-                          const run_id = data.artifacts
+                          const artifact = data.artifacts
                               .filter((artifact) => !artifact.expired)
-                              .map((artifact) => artifact.workflow_run.head_sha)
-                              .find((head_sha) => head_sha === context.sha);
+                              .find((artifact) => artifact.workflow_run.head_sha === context.sha);
 
-                          if (run_id) {
-                              return run_id;
+                          if (artifact) {
+                              return artifact.workflow_run.id;
                           }
 
                           if (page * per_page < data.total_count) {
@@ -52,7 +52,7 @@ jobs:
     update:
         name: update screenshots
         runs-on: ubuntu-latest
-        needs: run_id
+        needs: artifact
         if: ${{ github.repository == 'hextion/core-components' }}
         steps:
             - uses: actions/checkout@v4
@@ -66,12 +66,12 @@ jobs:
             - uses: ./.github/actions/ci-setup
 
             - name: download build
-              if: ${{ needs.run_id.outputs.run_id != '' }}
+              if: ${{ needs.artifact.outputs.workflow_run_id != '' }}
               uses: actions/download-artifact@v4
               with:
                   name: build
                   path: build
-                  run-id: ${{ needs.run_id.outputs.run_id }}
+                  run-id: ${{ needs.artifact.outputs.workflow_run_id }}
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   repository: ${{ github.repository }}
 
