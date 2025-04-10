@@ -58,6 +58,6 @@ jobs:
 
                       await exec.exec('git', ['commit', '-n', '-m', message]);
 
-                      const branch = context.ref.replace('refs/heads/', '');
+                      const branch = context.ref;
 
                       await exec.exec('git', ['push', 'origin', branch]);
