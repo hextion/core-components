@@ -42,6 +42,7 @@ jobs:
                               owner,
                               repo,
                               page,
+                              per_page,
                               name: 'build',
                           });
 

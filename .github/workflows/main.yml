@@ -74,6 +74,8 @@ jobs:
         needs: build-demo
         steps:
             - uses: actions/checkout@v4
+              with:
+                  lfs: true
 
             - uses: ./.github/actions/ci-setup
 
