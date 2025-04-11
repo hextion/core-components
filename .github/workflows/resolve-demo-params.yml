@@ -1,0 +1,28 @@
+name: resolve-demo-params
+
+on:
+    workflow_call:
+        inputs:
+            version:
+                description: Version of @balafla/core-components package, tag or commit sha
+                required: false
+                type: string
+        outputs:
+            ref:
+                description: Checkout ref
+                value: ${{ jobs.resolve.outputs.ref }}
+            dir:
+                description: Demo directory
+                value: ${{ jobs.resolve.outputs.dir }}
+
+jobs:
+    resolve:
+        runs-on: ubuntu-latest
+        outputs:
+            ref: ${{ steps.resolve.outputs.ref }}
+            dir: ${{ steps.resolve.outputs.dir }}
+        steps:
+            - uses: hextion/core-components/.github/actions/resolve-demo-params@master
+              id: resolve
+              with:
+                  version: ${{ inputs.version }}
