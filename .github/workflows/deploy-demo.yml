@@ -6,7 +6,7 @@ on:
             run-id:
                 description: Artifact workflow run id
                 required: true
-                type: number
+                type: string
             dir:
                 description: Deploy directory
                 required: true
