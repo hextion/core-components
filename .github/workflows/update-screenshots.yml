@@ -7,52 +7,14 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    artifact:
-        name: find artifact
-        runs-on: ubuntu-latest
-        if: ${{ github.repository == 'hextion/core-components' }}
-        outputs:
-            workflow_run_id: ${{ steps.find.outputs.result }}
-        steps:
-            - id: find
-              uses: actions/github-script@v7
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  result-encoding: string
-                  script: |
-                      const getRunId = async (page = 1) => {
-                          const { owner, repo } = context.repo;
-                          const per_page = 30;
-
-                          const { data } = await github.rest.actions.listArtifactsForRepo({
-                              owner,
-                              repo,
-                              page,
-                              per_page,
-                              name: 'build',
-                          });
-
-                          const artifact = data.artifacts
-                              .filter((artifact) => !artifact.expired)
-                              .find((artifact) => artifact.workflow_run.head_sha === context.sha);
-
-                          if (artifact) {
-                              return artifact.workflow_run.id;
-                          }
-
-                          if (page * per_page < data.total_count) {
-                              return getRunId(page + 1);
-                          }
-
-                          return '';
-                      };
-
-                      return await getRunId();
+    build-demo:
+        uses: ./.github/workflows/build-demo.yml
+        secrets: inherit
 
     update:
         name: update screenshots
         runs-on: ubuntu-latest
-        needs: artifact
+        needs: build-demo
         if: ${{ github.repository == 'hextion/core-components' }}
         steps:
             - uses: actions/checkout@v4
@@ -66,14 +28,12 @@ jobs:
             - uses: ./.github/actions/ci-setup
 
             - name: download build
-              if: ${{ needs.artifact.outputs.workflow_run_id != '' }}
               uses: actions/download-artifact@v4
               with:
                   name: build
                   path: build
-                  run-id: ${{ needs.artifact.outputs.workflow_run_id }}
+                  run-id: ${{ needs.build-demo.outputs.run-id }}
                   github-token: ${{ secrets.GITHUB_TOKEN }}
-                  repository: ${{ github.repository }}
 
             - name: update screenshots
               shell: bash
