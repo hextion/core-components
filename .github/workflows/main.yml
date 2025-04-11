@@ -68,6 +68,15 @@ jobs:
         uses: ./.github/workflows/build-demo.yml
         secrets: inherit
 
+    deploy:
+        if: ${{ github.repository == 'hextion/core-components' }}
+        needs: build-demo
+        uses: ./.github/workflows/deploy-demo.yml
+        secrets: inherit
+        with:
+            run-id: ${{ needs.build-demo.outputs.run-id }}
+            dir: ${{ github.event.pull_request.number }}
+
     screenshot-test:
         name: screenshot test
         runs-on: ubuntu-latest
@@ -98,15 +107,6 @@ jobs:
                   name: diff
                   path: packages/**/__diff_output__/*
                   if-no-files-found: ignore
-
-    deploy:
-        if: ${{ github.repository == 'hextion/core-components' }}
-        needs: build-demo
-        uses: ./.github/workflows/deploy-demo.yml
-        secrets: inherit
-        with:
-            run-id: ${{ needs.build-demo.outputs.run-id }}
-            dir: ${{ github.event.pull_request.number }}
 
     ci-ok:
         name: ci ok
