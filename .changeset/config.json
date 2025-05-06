@@ -5,7 +5,7 @@
     "fixed": [],
     "linked": [],
     "access": "public",
-    "baseBranch": "beta",
+    "baseBranch": "master",
     "updateInternalDependencies": "patch",
     "snapshot": {
         "prereleaseTemplate": "{tag}-{commit}",
