@@ -1,5 +1,13 @@
 # @alfalab/core-components-calendar
 
+## 7.18.2-beta.0
+
+### Patch Changes
+
+-   Обновлены зависимости
+    -   @balafla/core-components-typography@4.13.0-beta.0
+    -   @balafla/core-components-modal@9.9.12-beta.0
+
 ## 7.18.1
 
 ### Patch Changes
