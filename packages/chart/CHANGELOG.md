@@ -1,5 +1,12 @@
 # @alfalab/core-components-chart
 
+## 3.4.12
+
+### Patch Changes
+
+-   Обновлены зависимости
+    -   @balafla/core-components-typography@4.13.0
+
 ## 3.4.12-beta.0
 
 ### Patch Changes

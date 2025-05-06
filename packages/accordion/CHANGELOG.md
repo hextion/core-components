@@ -1,5 +1,12 @@
 # @alfalab/core-components-accordion
 
+## 1.2.11
+
+### Patch Changes
+
+-   Обновлены зависимости
+    -   @balafla/core-components-typography@4.13.0
+
 ## 1.2.11-beta.0
 
 ### Patch Changes

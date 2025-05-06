@@ -1,5 +1,13 @@
 # @alfalab/core-components-select
 
+## 17.20.12
+
+### Patch Changes
+
+-   Обновлены зависимости
+    -   @balafla/core-components-bottom-sheet@6.18.7
+    -   @balafla/core-components-modal@9.9.12
+
 ## 17.20.12-beta.1
 
 ### Patch Changes
