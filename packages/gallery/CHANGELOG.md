@@ -1,5 +1,13 @@
 # @alfalab/core-components-gallery
 
+## 5.11.10-beta.0
+
+### Patch Changes
+
+-   Обновлены зависимости
+    -   @balafla/core-components-typography@4.13.0-beta.0
+    -   @balafla/core-components-tooltip@7.9.9-beta.0
+
 ## 5.11.9
 
 ### Patch Changes

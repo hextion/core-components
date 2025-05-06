@@ -1,5 +1,12 @@
 # @alfalab/core-components-navigation-bar
 
+## 1.2.19-beta.0
+
+### Patch Changes
+
+-   Обновлены зависимости
+    -   @balafla/core-components-typography@4.13.0-beta.0
+
 ## 1.2.18
 
 ### Patch Changes
