@@ -1,12 +1,5 @@
 # @alfalab/core-components-confirmation
 
-## 13.9.12-beta.0
-
-### Patch Changes
-
--   Обновлены зависимости
-    -   @balafla/core-components-typography@4.13.0-beta.0
-
 ## 13.9.11
 
 ### Patch Changes

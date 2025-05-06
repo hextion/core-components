@@ -1,15 +1,5 @@
 # @alfalab/core-components-typography
 
-## 4.13.0-beta.0
-
-### Minor Changes
-
-<sup><time>06.05.2025</time></sup>
-
-#### [#24](https://github.com/hextion/core-components/pull/24)
-
--   Изменение типографики требует тестирования с бета пакетом
-
 ## 4.12.1
 
 ### Patch Changes
