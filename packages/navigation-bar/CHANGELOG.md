@@ -1,5 +1,15 @@
 # @alfalab/core-components-navigation-bar
 
+## 2.0.0
+
+### Major Changes
+
+<sup><time>14.05.2025</time></sup>
+
+#### [#61](https://github.com/hextion/core-components/pull/61)
+
+-   major
+
 ## 1.2.19
 
 ### Patch Changes
