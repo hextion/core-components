@@ -136,6 +136,8 @@ export const Gallery: FC<GalleryProps> = ({
         [imagesMeta],
     );
 
+
+    // add new info
     const handleClose = useCallback(() => {
         onClose();
 
