@@ -1,5 +1,13 @@
 # @alfalab/core-components
 
+## 49.0.7
+
+### Patch Changes
+
+-   Обновлены зависимости
+    -   @balafla/core-components-with-suffix@6.0.0
+    -   @balafla/core-components-amount-input@7.14.4
+
 ## 49.0.6
 
 ### Patch Changes
