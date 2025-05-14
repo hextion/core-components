@@ -1,5 +1,15 @@
 # @alfalab/core-components-with-suffix
 
+## 6.0.0
+
+### Major Changes
+
+<sup><time>14.05.2025</time></sup>
+
+#### [#55](https://github.com/hextion/core-components/pull/55)
+
+-   Major
+
 ## 5.0.0
 
 ### Major Changes

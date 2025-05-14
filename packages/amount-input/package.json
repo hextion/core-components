@@ -1,6 +1,6 @@
 {
     "name": "@balafla/core-components-amount-input",
-    "version": "7.14.3",
+    "version": "7.14.4",
     "description": "",
     "keywords": [],
     "license": "MIT",
@@ -16,7 +16,7 @@
     },
     "dependencies": {
         "@balafla/core-components-input": "^15.5.4",
-        "@balafla/core-components-with-suffix": "^5.0.0",
+        "@balafla/core-components-with-suffix": "^6.0.0",
         "@alfalab/data": "^1.9.1",
         "@alfalab/utils": "^1.18.0",
         "classnames": "^2.5.1",
