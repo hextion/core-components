@@ -1,5 +1,15 @@
 # @alfalab/core-components-gallery
 
+## 6.0.0
+
+### Major Changes
+
+<sup><time>14.05.2025</time></sup>
+
+#### [#60](https://github.com/hextion/core-components/pull/60)
+
+-   major
+
 ## 5.11.10
 
 ### Patch Changes
