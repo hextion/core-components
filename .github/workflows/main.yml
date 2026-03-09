@@ -24,14 +24,16 @@ jobs:
         steps:
             - name: save pull request data
               run: |
+                  mkdir -p pr
                   {
-                      echo "${{ toJson(github.event.pull_request) }}"
+                      echo '${{ toJson(github.event.pull_request) }}'
                   } > pr/data.json
 
             - uses: actions/upload-artifact@v7
               with:
                   name: pr
                   path: pr
+
     demo:
         uses: ./.github/workflows/demo.yml
         secrets: inherit
