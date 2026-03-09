@@ -12,10 +12,11 @@ on:
                 description: Directory deploy to
                 required: false
                 type: string
-        outputs:
-            run-id:
-                description: Artifact workflow run id
-                value: ${{ jobs.build-variants-demo.outputs.run-id }}
+            deploy-repository:
+                description: Repository
+                required: false
+                type: string
+                default: ${{ github.repository }}
     workflow_dispatch:
         inputs:
             version:
@@ -28,7 +29,7 @@ on:
                 type: string
 
 concurrency:
-    group: ${{ github.workflow }}-${{ case(inputs.version == '', github.ref, inputs.version) }}
+    group: demo-${{ case(inputs.version == '', github.ref, inputs.version) }}
     cancel-in-progress: true
 
 defaults:
@@ -42,49 +43,3 @@ jobs:
         with:
             version: ${{ inputs.version }}
             directory: ${{ inputs.directory }}
-
-    variants:
-        uses: ./.github/workflows/variants.yml
-
-    build-variants-demo:
-        if: ${{ needs.variants.outputs.result != '' }}
-        needs: [params, variants]
-        strategy:
-            matrix:
-                include: ${{ fromJson(needs.variants.outputs.result) }}
-        uses: ./.github/workflows/build-demo.yml
-        secrets: inherit
-        with:
-            ref: ${{ needs.params.outputs.ref }}
-            variant: ${{ matrix.variant }}
-            artifact-name: ${{ matrix.variant }}
-
-    deploy-variants:
-        needs: [build-variants-demo, params, variants]
-        strategy:
-            max-parallel: 1
-            matrix:
-                include: ${{ fromJson(needs.variants.outputs.result) }}
-        uses: ./.github/workflows/deploy-demo.yml
-        secrets: inherit
-        with:
-            run-id: ${{ needs.build-variants-demo.outputs.run-id }}
-            directory: '${{ needs.params.outputs.directory }}-${{ matrix.variant }}'
-            variant: ${{ matrix.variant }}
-            artifact-name: ${{ matrix.variant }}
-
-    build-demo:
-        if: ${{ needs.variants.outputs.result == '' }}
-        needs: [params, variants]
-        uses: ./.github/workflows/build-demo.yml
-        secrets: inherit
-        with:
-            ref: ${{ needs.params.outputs.ref }}
-
-    deploy:
-        needs: [build-demo, params]
-        uses: ./.github/workflows/deploy-demo.yml
-        secrets: inherit
-        with:
-            run-id: ${{ needs.build-demo.outputs.run-id }}
-            directory: ${{ needs.params.outputs.directory }}
