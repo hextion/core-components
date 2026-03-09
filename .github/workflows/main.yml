@@ -34,6 +34,17 @@ jobs:
                   name: pr
                   path: pr
 
+    download-data:
+        needs: upload-data
+        runs-on: ubuntu-latest
+        if: ${{ github.event_name == 'pull_request' }}
+        steps:
+            - uses: actions/download-artifact@v8
+              with:
+                  name: pr
+                  path: pr
+                  run-id: ${{ github.run_id }}
+
     demo:
         uses: ./.github/workflows/demo.yml
         secrets: inherit
