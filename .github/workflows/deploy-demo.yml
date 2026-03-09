@@ -39,6 +39,8 @@ jobs:
     deploy:
         name: deploy
         runs-on: ubuntu-latest
+        # check if vars are available
+        if: ${{ vars.APP_ID != '' }}
         outputs:
             url: 'https://${{ steps.repository.outputs.owner }}.github.io/${{ steps.repository.outputs.repo }}/${{ inputs.directory }}'
         steps:
