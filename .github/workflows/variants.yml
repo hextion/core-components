@@ -44,9 +44,9 @@ jobs:
                       const file = '${{ github.workspace }}/variants/config.json';
                       let config = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, { encoding: 'utf8' })) : [];
 
-                      config = '${{ inputs.include-default }}' === 'false'
-                          ? config.filter(({ variant }) => variant !== 'default')
-                          : config;
+                      config = ${{ inputs.include-default }}
+                          ? config
+                          : config.filter(({ variant }) => variant !== 'default');
 
                       core.setOutput('empty', config.length === 0);
 

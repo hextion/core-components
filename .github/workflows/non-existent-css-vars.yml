@@ -41,9 +41,9 @@ jobs:
 
             - name: run build
               env:
-                  BUILD_WITHOUT_CSS_VARS: 'true'
+                  BUILD_WITHOUT_CSS_VARS: true
                   BUILD_CONCURRENCY: 4
-                  BUILD_MODERN_ONLY: 'true'
+                  BUILD_MODERN_ONLY: true
               run: |
                   yarn build
 

@@ -57,7 +57,7 @@ jobs:
                           core.warning("Empty directories list");
                       }
 
-                      if ('${{ needs.variants.result }}' === 'skipped' || '${{ needs.variants.outputs.empty }}' === 'true') {
+                      if ('${{ needs.variants.result }}' === 'skipped' || ${{ needs.variants.outputs.empty }}) {
                           return directories;
                       }
 
@@ -106,7 +106,7 @@ jobs:
                       return stdout.split('\n').some((line) => /^\s+D\s+.*$/.test(line));
 
             - name: deploy
-              if: ${{ steps.remove.outputs.result == 'true' }}
+              if: ${{ fromJson(steps.remove.outputs.result) }}
               uses: ./.github/actions/commit-and-push
               with:
                   message: 'Deploy to GitHub Pages'

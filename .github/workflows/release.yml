@@ -63,7 +63,7 @@ jobs:
         strategy:
             matrix:
                 include: ${{ fromJson(needs.variant.outputs.json) }}
-        if: ${{ needs.release.outputs.published == 'true' }}
+        if: ${{ fromJson(needs.release.outputs.published) }}
         env:
             CORE_COMPONENTS_VARIANT: ${{ matrix.variant }}
         runs-on: ubuntu-latest

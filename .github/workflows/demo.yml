@@ -20,7 +20,7 @@ on:
         outputs:
             run-id:
                 description: Artifact workflow run id
-                value: ${{ case(jobs.variants.outputs.empty == 'true', jobs.build-demo.outputs.run-id, jobs.build-variants-demo.outputs.run-id) }}
+                value: ${{ case(fromJson(jobs.variants.outputs.empty), jobs.build-demo.outputs.run-id, jobs.build-demo-variants.outputs.run-id) }}
     workflow_dispatch:
         inputs:
             version:
@@ -71,8 +71,8 @@ jobs:
     variants:
         uses: ./.github/workflows/variants.yml
 
-    build-variants-demo:
-        if: ${{ needs.variants.outputs.empty == 'false' }}
+    build-demo-variants:
+        if: ${{ !fromJson(needs.variants.outputs.empty) }}
         needs: [params, variants]
         strategy:
             matrix:
@@ -85,7 +85,7 @@ jobs:
             artifact-name: ${{ matrix.variant }}
 
     deploy-variants:
-        needs: [build-variants-demo, params, sha, variants]
+        needs: [build-demo-variants, params, sha, variants]
         strategy:
             max-parallel: 1
             matrix:
@@ -93,7 +93,7 @@ jobs:
         uses: ./.github/workflows/deploy-demo.yml
         secrets: inherit
         with:
-            run-id: ${{ needs.build-variants-demo.outputs.run-id }}
+            run-id: ${{ needs.build-demo-variants.outputs.run-id }}
             directory: '${{ needs.params.outputs.directory }}-${{ matrix.variant }}'
             variant: ${{ matrix.variant }}
             artifact-name: ${{ matrix.variant }}
@@ -101,7 +101,7 @@ jobs:
             sha: ${{ needs.sha.outputs.result }}
 
     build-demo:
-        if: ${{ needs.variants.outputs.empty == 'true' }}
+        if: ${{ fromJson(needs.variants.outputs.empty) }}
         needs: [params, variants]
         uses: ./.github/workflows/build-demo.yml
         secrets: inherit
