@@ -30,8 +30,7 @@ jobs:
     update:
         name: update screenshots (${{ inputs.variant }})
         runs-on: ubuntu-latest
-        needs: [build-demo]
-        if: ${{ github.repository == 'core-ds/core-components' }}
+        needs: build-demo
         permissions:
             contents: write
         env:

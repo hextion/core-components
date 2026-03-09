@@ -54,6 +54,7 @@ jobs:
     pull-requests:
         name: find pull request
         runs-on: ubuntu-latest
+        continue-on-error: true
         outputs:
             json: ${{ steps.pull-requests.outputs.json }}
             empty: ${{ steps.pull-requests.outputs.empty }}
@@ -72,6 +73,7 @@ jobs:
             matrix:
                 pull-request-number: ${{ fromJson(needs.pull-requests.outputs.json) }}
         runs-on: ubuntu-latest
+        continue-on-error: true
         steps:
             - name: prepare comment
               id: prepare-comment

@@ -95,7 +95,6 @@ jobs:
             - id: remove
               uses: actions/github-script@v8
               with:
-                  result-encoding: string
                   script: |
                       const directories = JSON.parse('${{ needs.resolve-directory.outputs.result }}');
 
