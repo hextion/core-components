@@ -222,6 +222,23 @@ jobs:
                       git apply "$PATCH_SOURCE"
                   fi
 
+    upload-pull-request-data:
+        runs-on: ubuntu-latest
+        if: ${{ github.event_name == 'pull_request' }}
+        steps:
+            - name: make json
+              run: |
+                  mkdir -p pull-request
+
+                  {
+                      echo '${{ toJson(github.event.pull_request) }}'
+                  } > pull-request/data.json
+
+            - uses: actions/upload-artifact@v7
+              with:
+                  name: pull-request
+                  path: pull-request
+
     ci-ok:
         name: ci ok
         runs-on: ubuntu-latest
