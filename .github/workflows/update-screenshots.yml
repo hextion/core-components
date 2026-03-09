@@ -60,7 +60,7 @@ jobs:
                   yarn test:screenshots -u
 
             - name: check git status
-              id: git-status
+              id: have-changes
               uses: actions/github-script@v8
               with:
                   script: |
@@ -69,7 +69,7 @@ jobs:
                       return stdout.trim().length > 0;
 
             - name: update branch
-              if: ${{ steps.git-status.outputs.result == 'true' }}
+              if: ${{ fromJson(steps.have-changes.outputs.result) }}
               uses: ./.github/actions/commit-and-push
               with:
                   message: 'test: updated screenshots'
