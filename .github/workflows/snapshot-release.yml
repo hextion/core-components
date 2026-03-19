@@ -4,6 +4,10 @@ on:
     workflow_call:
     workflow_dispatch:
         inputs:
+            pull-request:
+                description: Pull request number
+                type: number
+                required: true
             variant:
                 description: Variant of core components
                 required: false
@@ -13,7 +17,9 @@ on:
                     - default
                     - alfasans
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}-${{ inputs.variant }}
+concurrency:
+    group: ${{ github.workflow }}-${{ inputs.pull-request }}-${{ inputs.variant }}
+    cancel-in-progress: true
 
 jobs:
     snapshot-release:
@@ -28,7 +34,28 @@ jobs:
         env:
             CORE_COMPONENTS_VARIANT: ${{ inputs.variant }}
         steps:
+            - name: get pull request data
+              id: data
+              uses: actions/github-script@v8
+              with:
+                  script: |
+                      const { data } = await octokit.rest.pulls.get({
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          pull_number: ${{ inputs.pull-request }},
+                      });
+
+                      if (data.head.repo.fork) {
+                          core.setOutput('repository', data.head.repo.full_name);
+                      }
+
+                      core.setOutput('sha', data.head.sha);
+
             - uses: actions/checkout@v6
+              with:
+                  repository: ${{ steps.data.outputs.repository }}
+                  ref: ${{ steps.data.outputs.sha }}
+                  token: ${{ secrets.GITHUB_TOKEN }}
 
             - name: apply patch
               run: |
@@ -51,37 +78,22 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-    pull-requests:
-        name: find pull request
-        runs-on: ubuntu-latest
-        continue-on-error: true
-        outputs:
-            json: ${{ steps.pull-requests.outputs.json }}
-            empty: ${{ steps.pull-requests.outputs.empty }}
-        steps:
-            - name: find pull request
-              uses: core-ds/core-components/.github/actions/find-open-pull-requests@master
-              id: pull-requests
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-
     comment:
-        needs: [snapshot-release, pull-requests]
-        if: ${{ fromJson(needs.snapshot-release.outputs.published) && !fromJson(needs.pull-requests.outputs.empty) }}
-        strategy:
-            fail-fast: false
-            matrix:
-                pull-request-number: ${{ fromJson(needs.pull-requests.outputs.json) }}
+        needs: snapshot-release
+        if: ${{ fromJson(needs.snapshot-release.outputs.published) }}
         runs-on: ubuntu-latest
-        continue-on-error: true
+        permissions:
+            issues: write # to post issue comments
         steps:
             - name: prepare comment
               id: prepare-comment
               uses: actions/github-script@v8
+              env:
+                  PUBLISHED_PACKAGES: ${{ needs.snapshot-release.outputs.published-packages }}
               with:
                   result-encoding: string
                   script: |
-                      return JSON.parse('${{ needs.snapshot-release.outputs.published-packages }}')
+                      return JSON.parse(process.env.PUBLISHED_PACKAGES)
                           .map(({ name, version }, index) => `${index + 1}. \`${name}@${version}\``)
                           .join('\n\n');
 
@@ -89,9 +101,9 @@ jobs:
               uses: peter-evans/create-or-update-comment@e8674b075228eee787fea43ef493e45ece1004c9 # v5
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
-                  issue-number: ${{ matrix.pull-request-number }}
+                  issue-number: ${{ inputs.pull-request }}
                   body: |
-                      ## Snapshot release (${{ inputs.variant }})
+                      ## Snapshot release
 
                       Successfully released the following packages:
 
