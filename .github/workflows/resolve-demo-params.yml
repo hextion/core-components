@@ -1,4 +1,4 @@
-name: resolve-demo-params
+name: Resolve demo params
 
 on:
     workflow_call:
@@ -24,8 +24,12 @@ defaults:
     run:
         shell: bash
 
+env:
+    PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+
 jobs:
     resolve:
+        name: Resolve
         runs-on: ubuntu-latest
         outputs:
             ref: ${{ steps.resolve-ref.outputs.result }}
@@ -35,13 +39,14 @@ jobs:
             CORE_COMPONENTS_DEMO_VERSION: ${{ inputs.version }}
             CORE_COMPONENTS_DEMO_DIRECTORY: ${{ inputs.directory }}
         steps:
-            - uses: actions/checkout@v6
+            - name: Checkout
+              uses: actions/checkout@v6
 
-            - uses: ./.github/actions/ci-setup
-              env:
-                  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+            - name: Setup CI
+              uses: ./.github/actions/ci-setup
 
-            - id: resolve-ref
+            - name: Resolve ref
+              id: resolve-ref
               uses: actions/github-script@v8
               with:
                   result-encoding: string
@@ -60,14 +65,16 @@ jobs:
                           io,
                       });
 
-            - uses: actions/checkout@v6
+            - name: Checkout resolved ref
+              uses: actions/checkout@v6
               if: ${{ steps.resolve-ref.outputs.result != github.ref }}
               with:
                   ref: ${{ steps.resolve-ref.outputs.result }}
                   fetch-tags: true
                   path: checkout-ref
 
-            - id: resolve-directory
+            - name: Resolve directory
+              id: resolve-directory
               uses: actions/github-script@v8
               with:
                   result-encoding: string

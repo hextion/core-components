@@ -42,7 +42,7 @@ jobs:
         steps:
             - name: Generate app token
               id: generate-token
-              uses: actions/create-github-app-token@v2
+              uses: actions/create-github-app-token@v3
               with:
                   app-id: ${{ vars.APP_ID }}
                   private-key: ${{ secrets.APP_PRIVATE_KEY }}
@@ -66,6 +66,7 @@ jobs:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     variants:
+        name: Variants
         uses: ./.github/workflows/variants.yml
         with:
             include-default: false
@@ -160,7 +161,7 @@ jobs:
         permissions:
             issues: write # to post issue comments
         steps:
-            - name: prepare comment
+            - name: Prepare comment
               id: prepare-comment
               uses: actions/github-script@v8
               env:
@@ -172,7 +173,7 @@ jobs:
                           .map(({ name, version }, index) => `${index + 1}. \`${name}@${version}\``)
                           .join('\n\n');
 
-            - name: create comment
+            - name: Create comment
               uses: peter-evans/create-or-update-comment@e8674b075228eee787fea43ef493e45ece1004c9 # v5
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}

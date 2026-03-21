@@ -1,4 +1,4 @@
-name: variants
+name: Variants
 
 on:
     workflow_call:
@@ -27,16 +27,19 @@ defaults:
 
 jobs:
     variants:
+        name: Variants
         runs-on: ubuntu-latest
         outputs:
             json: ${{ steps.config.outputs.result }}
             empty: ${{ steps.config.outputs.empty }}
         steps:
-            - uses: actions/checkout@v6
+            - name: Checkout
+              uses: actions/checkout@v6
               with:
                   ref: ${{ inputs.ref }}
 
-            - id: config
+            - name: Read config
+              id: config
               uses: actions/github-script@v8
               with:
                   script: |

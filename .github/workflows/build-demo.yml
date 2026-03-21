@@ -1,4 +1,4 @@
-name: build-demo
+name: Build demo
 
 on:
     workflow_call:
@@ -27,18 +27,23 @@ defaults:
     run:
         shell: bash
 
+env:
+    PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+
 jobs:
     artifact:
-        name: find artifact
+        name: Find artifact
         runs-on: ubuntu-latest
         outputs:
-            run_id: ${{ steps.find.outputs.result }}
+            run_id: ${{ steps.search.outputs.result }}
         steps:
-            - uses: actions/checkout@v6
+            - name: Checkout
+              uses: actions/checkout@v6
               with:
                   ref: ${{ inputs.ref }}
 
-            - id: find
+            - name: Searching artifact
+              id: search
               uses: actions/github-script@v8
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -77,37 +82,34 @@ jobs:
                       return await getRunId();
 
     build-demo:
-        name: build demo
+        name: Build demo (${{ inputs.variant }})
         needs: artifact
         if: ${{ needs.artifact.outputs.run_id == github.run_id }}
         runs-on: ubuntu-latest
         env:
             CORE_COMPONENTS_VARIANT: ${{ inputs.variant }}
         steps:
-            - uses: actions/checkout@v6
+            - name: Checkout
+              uses: actions/checkout@v6
               with:
                   ref: ${{ inputs.ref }}
                   lfs: true
 
-            - name: apply patch
-              run: |
-                  PATCH_SOURCE='variants/${{ inputs.variant }}.patch'
+            - name: Setup variant
+              uses: core-ds/core-components/.github/actions/setup-variant@chore/contribute-via-fork
+              with:
+                  variant: ${{ inputs.variant }}
 
-                  if [ -f "$PATCH_SOURCE" ]; then
-                      git apply "$PATCH_SOURCE"
-                  fi
+            - name: Setup CI
+              uses: core-ds/core-components/.github/actions/ci-setup@master
 
-            - uses: core-ds/core-components/.github/actions/ci-setup@master
-              env:
-                  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
-
-            - name: build demo
+            - name: Build demo
               env:
                   BUILD_CONCURRENCY: 4
               run: |
                   yarn build-storybook
 
-            - name: upload demo build
+            - name: Upload demo build
               uses: actions/upload-artifact@v7
               with:
                   name: ${{ inputs.artifact-name }}
