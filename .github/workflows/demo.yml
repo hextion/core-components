@@ -101,7 +101,7 @@ jobs:
         secrets: inherit
         with:
             run-id: ${{ needs.build-demo.outputs.run-id }}
-            directory: ${{ case(matrix.variant == 'default', needs.params.outputs.directory, format('${0}-{1}', needs.params.outputs.directory, matrix.variant)) }}
+            directory: ${{ case(matrix.variant == 'default', needs.params.outputs.directory, format('{0}-{1}', needs.params.outputs.directory, matrix.variant)) }}
             variant: ${{ matrix.variant }}
             artifact-name: ${{ matrix.variant }}
             deploy-repository: ${{ inputs.deploy-repository }}
