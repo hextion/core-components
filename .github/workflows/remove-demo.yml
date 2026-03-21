@@ -112,6 +112,6 @@ jobs:
 
             - name: Commit and push
               if: ${{ fromJson(steps.remove.outputs.result) }}
-              uses: ./.github/actions/commit-and-push
+              uses: core-ds/core-components/.github/actions/commit-and-push@master
               with:
                   message: 'Deploy to GitHub Pages'
