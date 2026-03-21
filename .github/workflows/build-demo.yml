@@ -96,7 +96,7 @@ jobs:
                   lfs: true
 
             - name: Setup variant
-              uses: core-ds/core-components/.github/actions/setup-variant@chore/contribute-via-fork
+              uses: core-ds/core-components/.github/actions/setup-variant@master
               with:
                   variant: ${{ inputs.variant }}
 
