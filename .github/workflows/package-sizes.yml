@@ -1,4 +1,4 @@
-name: Check package sizes
+name: Package sizes
 
 on: pull_request
 
