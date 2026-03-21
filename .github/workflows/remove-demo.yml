@@ -41,28 +41,30 @@ jobs:
         if: ${{ always() && (needs.variants.result == 'success' || needs.variants.result == 'skipped') }}
         runs-on: ubuntu-latest
         outputs:
-            result: ${{ steps.resolve.outputs.result }}
+            result: ${{ steps.parse.outputs.result }}
         steps:
-            - name: Parse and resolve
-              id: resolve
+            - name: Parse
+              id: parse
               uses: actions/github-script@v8
+              env:
+                  INPUT_DIRECTORY: ${{ case(github.event_name == 'pull_request', github.event.pull_request.number, inputs.directory) }}
+                  VARIANTS_CONFIG: ${{ needs.variants.outputs.config }}
               with:
                   script: |
-                      const directories =
-                          '${{ case(github.event_name == 'pull_request', github.event.pull_request.number, inputs.directory) }}'
-                              .split(/\s*,\s*/)
-                              .filter(Boolean)
-                              .map(directory => ({ directory }));
+                      const directories = process.env.INPUT_DIRECTORY
+                          .split(/\s*,\s*/)
+                          .filter(Boolean)
+                          .map(directory => ({ directory }));
 
                       if (directories.length === 0) {
                           core.warning("Empty directories list");
                       }
 
-                      if ('${{ needs.variants.result }}' === 'skipped' || ${{ needs.variants.outputs.empty }}) {
+                      if ('${{ needs.variants.result }}' === 'skipped') {
                           return directories;
                       }
 
-                      const variants = JSON.parse('${{ needs.variants.outputs.json }}');
+                      const variants = JSON.parse(process.env.VARIANTS_CONFIG);
 
                       return directories.flatMap(({ directory }) => [{ directory }, ...variants.map(({ variant }) => ({ directory: `${directory}-${variant}` }))]);
 
