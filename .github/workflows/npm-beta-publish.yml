@@ -3,6 +3,11 @@ name: Beta release
 on: workflow_dispatch
 
 jobs:
-    snapshot-release:
-        uses: ./.github/workflows/snapshot-release.yml
-        secrets: inherit
+    warning_and_fail:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print warinig and fail
+              shell: bash
+              run: |
+                  echo "This workflow does nothing. Make sure ref is correct"
+                  exit 1
