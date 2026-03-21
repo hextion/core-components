@@ -47,6 +47,4 @@ jobs:
                           ? config
                           : config.filter(({ variant }) => variant !== 'default');
 
-                      core.setOutput('empty', config.length === 0);
-
                       return config;
