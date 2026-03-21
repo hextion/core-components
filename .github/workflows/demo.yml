@@ -9,7 +9,7 @@ on:
                 type: string
                 default: ${{ github.ref }}
             directory:
-                description: Directory deploy to
+                description: Directory to deploy demo
                 required: false
                 type: string
             deploy-repository:
@@ -20,7 +20,7 @@ on:
         outputs:
             run-id:
                 description: Artifact workflow run id
-                value: ${{ case(fromJson(jobs.variants.outputs.empty), jobs.build-demo.outputs.run-id, jobs.build-demo-variants.outputs.run-id) }}
+                value: ${{ jobs.build-demo.outputs.run-id }}
     workflow_dispatch:
         inputs:
             version:
@@ -28,7 +28,7 @@ on:
                 required: false
                 type: string
             directory:
-                description: Directory deploy to
+                description: Directory to deploy demo
                 required: false
                 type: string
 
@@ -70,59 +70,39 @@ jobs:
                   result-encoding: string
                   script: |
                       const { stdout } = await exec.getExecOutput('git', ['rev-list', '-n', '1', 'HEAD']);
+
                       return stdout.trim();
 
     variants:
         name: Variants
         uses: ./.github/workflows/variants.yml
 
-    build-demo-variants:
-        name: Build demo
-        if: ${{ !fromJson(needs.variants.outputs.empty) }}
-        needs: [params, variants]
-        strategy:
-            matrix:
-                include: ${{ fromJson(needs.variants.outputs.json) }}
-        uses: ./.github/workflows/build-demo.yml
-        secrets: inherit
-        with:
-            ref: ${{ needs.params.outputs.ref }}
-            variant: ${{ matrix.variant }}
-            artifact-name: ${{ matrix.variant }}
-
-    deploy-variants:
-        name: Deploy demo
-        needs: [build-demo-variants, params, sha, variants]
-        strategy:
-            max-parallel: 1
-            matrix:
-                include: ${{ fromJson(needs.variants.outputs.json) }}
-        uses: ./.github/workflows/deploy-demo.yml
-        secrets: inherit
-        with:
-            run-id: ${{ needs.build-demo-variants.outputs.run-id }}
-            directory: '${{ needs.params.outputs.directory }}-${{ matrix.variant }}'
-            variant: ${{ matrix.variant }}
-            artifact-name: ${{ matrix.variant }}
-            deploy-repository: ${{ inputs.deploy-repository }}
-            sha: ${{ needs.sha.outputs.result }}
-
     build-demo:
         name: Build demo
-        if: ${{ fromJson(needs.variants.outputs.empty) }}
         needs: [params, variants]
+        strategy:
+            matrix:
+                include: ${{ fromJson(needs.variants.outputs.config) }}
         uses: ./.github/workflows/build-demo.yml
         secrets: inherit
         with:
             ref: ${{ needs.params.outputs.ref }}
+            variant: ${{ matrix.variant }}
+            artifact-name: ${{ matrix.variant }}
 
     deploy:
         name: Deploy demo
-        needs: [build-demo, sha, params]
+        needs: [build-demo, params, sha, variants]
+        strategy:
+            max-parallel: 1
+            matrix:
+                include: ${{ fromJson(needs.variants.outputs.config) }}
         uses: ./.github/workflows/deploy-demo.yml
         secrets: inherit
         with:
             run-id: ${{ needs.build-demo.outputs.run-id }}
-            directory: ${{ needs.params.outputs.directory }}
+            directory: ${{ case(matrix.variant == 'default', needs.params.outputs.directory, format('${0}-{1}', needs.params.outputs.directory, matrix.variant)) }}
+            variant: ${{ matrix.variant }}
+            artifact-name: ${{ matrix.variant }}
             deploy-repository: ${{ inputs.deploy-repository }}
             sha: ${{ needs.sha.outputs.result }}

@@ -76,7 +76,7 @@ jobs:
         needs: [release, variants]
         strategy:
             matrix:
-                include: ${{ fromJson(needs.variants.outputs.json) }}
+                include: ${{ fromJson(needs.variants.outputs.config) }}
         if: ${{ fromJson(needs.release.outputs.published) }}
         permissions:
             id-token: write # to use OpenID Connect token for trusted publishing

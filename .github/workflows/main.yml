@@ -27,7 +27,7 @@ jobs:
         needs: [variants, setup-variant]
         strategy:
             matrix:
-                include: ${{ fromJson(needs.variants.outputs.json) }}
+                include: ${{ fromJson(needs.variants.outputs.config) }}
         env:
             CORE_COMPONENTS_VARIANT: ${{ matrix.variant }}
         runs-on: ubuntu-latest
@@ -55,7 +55,7 @@ jobs:
         needs: [variants, setup-variant]
         strategy:
             matrix:
-                include: ${{ fromJson(needs.variants.outputs.json) }}
+                include: ${{ fromJson(needs.variants.outputs.config) }}
         env:
             CORE_COMPONENTS_VARIANT: ${{ matrix.variant }}
         runs-on: ubuntu-latest
@@ -94,7 +94,7 @@ jobs:
         needs: [variants, setup-variant]
         strategy:
             matrix:
-                include: ${{ fromJson(needs.variants.outputs.json) }}
+                include: ${{ fromJson(needs.variants.outputs.config) }}
         env:
             CORE_COMPONENTS_VARIANT: ${{ matrix.variant }}
         runs-on: ubuntu-latest
@@ -223,7 +223,7 @@ jobs:
         needs: variants
         strategy:
             matrix:
-                include: ${{ fromJson(needs.variants.outputs.json) }}
+                include: ${{ fromJson(needs.variants.outputs.config) }}
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -258,7 +258,7 @@ jobs:
         needs: variants
         strategy:
             matrix:
-                include: ${{ fromJson(needs.variants.outputs.json) }}
+                include: ${{ fromJson(needs.variants.outputs.config) }}
         env:
             CORE_COMPONENTS_VARIANT: ${{ matrix.variant }}
         runs-on: ubuntu-latest

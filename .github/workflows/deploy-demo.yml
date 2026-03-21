@@ -8,7 +8,7 @@ on:
                 required: true
                 type: string
             directory:
-                description: Deploy directory
+                description: Directory to deploy demo
                 required: true
                 type: string
             variant:
