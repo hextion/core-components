@@ -14,9 +14,6 @@ outputs:
     json:
         description: An array of pull request numbers as JSON string
         value: ${{ steps.pull-request.outputs.result }}
-    empty:
-        description: A boolean value to indicate whether an array is empty
-        value: ${{ steps.pull-request.outputs.empty }}
 
 runs:
     using: composite
@@ -34,7 +31,5 @@ runs:
                       commit_sha: sha,
                   });
                   const prs = data.filter((p) => p.state === 'open').map((p) => p.number);
-
-                  core.setOutput('empty', prs.length === 0);
 
                   return prs;
