@@ -1,4 +1,4 @@
-name: remove-demo
+name: Remove demo
 
 on:
     pull_request:
@@ -36,14 +36,15 @@ jobs:
         secrets: inherit
 
     resolve-directory:
-        name: resolve directory
+        name: Resolve directory
         needs: variants
         if: ${{ always() && (needs.variants.result == 'success' || needs.variants.result == 'skipped') }}
         runs-on: ubuntu-latest
         outputs:
             result: ${{ steps.resolve.outputs.result }}
         steps:
-            - id: resolve
+            - name: Parse and resolve
+              id: resolve
               uses: actions/github-script@v8
               with:
                   script: |
@@ -66,33 +67,36 @@ jobs:
                       return directories.flatMap(({ directory }) => [{ directory }, ...variants.map(({ variant }) => ({ directory: `${directory}-${variant}` }))]);
 
     remove-demo:
-        name: remove demo
+        name: Remove demo
         needs: resolve-directory
         runs-on: ubuntu-latest
         if: ${{ always() && needs.resolve-directory.result == 'success' }}
         steps:
-            - id: repository
+            - name: Parse repository name
+              id: repository
               uses: core-ds/core-components/.github/actions/parse-repository@master
               with:
                   repository: ${{ case(github.event_name == 'pull_request', github.event.pull_request.head.repo.full_name, github.repository) }}
 
-            - name: generate app token
+            - name: Generate app token
               id: generate-token
-              uses: actions/create-github-app-token@v2
+              uses: actions/create-github-app-token@v3
               with:
                   app-id: ${{ vars.APP_ID }}
                   private-key: ${{ secrets.APP_PRIVATE_KEY }}
                   owner: ${{ steps.repository.outputs.owner }}
                   repositories: ${{ steps.repository.outputs.repo }}
 
-            - uses: actions/checkout@v6
+            - name: Checkout
+              uses: actions/checkout@v6
               with:
                   repository: ${{ steps.repository.outputs.full-name }}
                   token: ${{ steps.generate-token.outputs.token }}
                   ref: gh-pages
                   lfs: true
 
-            - id: remove
+            - name: Remove demo
+              id: remove
               uses: actions/github-script@v8
               with:
                   script: |
@@ -104,7 +108,7 @@ jobs:
 
                       return stdout.split('\n').some((line) => /^\s+D\s+.*$/.test(line));
 
-            - name: deploy
+            - name: Commit and push
               if: ${{ fromJson(steps.remove.outputs.result) }}
               uses: ./.github/actions/commit-and-push
               with:

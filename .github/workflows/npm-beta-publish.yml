@@ -4,10 +4,10 @@ on: workflow_dispatch
 
 jobs:
     warning_and_fail:
+        name: This workflow does nothing. Make sure ref is correct
         runs-on: ubuntu-latest
         steps:
-            - name: Print warinig and fail
+            - name: Fail
               shell: bash
               run: |
-                  echo "This workflow does nothing. Make sure ref is correct"
                   exit 1

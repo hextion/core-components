@@ -1,4 +1,4 @@
-name: demo
+name: Demo
 
 on:
     workflow_call:
@@ -42,6 +42,7 @@ defaults:
 
 jobs:
     params:
+        name: Resolve demo params
         uses: ./.github/workflows/resolve-demo-params.yml
         secrets: inherit
         with:
@@ -49,17 +50,20 @@ jobs:
             directory: ${{ inputs.directory }}
 
     sha:
+        name: Resolve demo SHA
         needs: params
         runs-on: ubuntu-latest
         outputs:
             result: ${{ steps.find.outputs.result }}
         steps:
-            - uses: actions/checkout@v6
+            - name: Checkout
+              uses: actions/checkout@v6
               if: ${{ github.event_name == 'workflow_dispatch' }}
               with:
                   ref: ${{ needs.params.outputs.ref }}
 
-            - id: find
+            - name: Get SHA
+              id: find
               if: ${{ github.event_name == 'workflow_dispatch' }}
               uses: actions/github-script@v8
               with:
@@ -69,9 +73,11 @@ jobs:
                       return stdout.trim();
 
     variants:
+        name: Variants
         uses: ./.github/workflows/variants.yml
 
     build-demo-variants:
+        name: Build demo
         if: ${{ !fromJson(needs.variants.outputs.empty) }}
         needs: [params, variants]
         strategy:
@@ -85,6 +91,7 @@ jobs:
             artifact-name: ${{ matrix.variant }}
 
     deploy-variants:
+        name: Deploy demo
         needs: [build-demo-variants, params, sha, variants]
         strategy:
             max-parallel: 1
@@ -101,6 +108,7 @@ jobs:
             sha: ${{ needs.sha.outputs.result }}
 
     build-demo:
+        name: Build demo
         if: ${{ fromJson(needs.variants.outputs.empty) }}
         needs: [params, variants]
         uses: ./.github/workflows/build-demo.yml
@@ -109,6 +117,7 @@ jobs:
             ref: ${{ needs.params.outputs.ref }}
 
     deploy:
+        name: Deploy demo
         needs: [build-demo, sha, params]
         uses: ./.github/workflows/deploy-demo.yml
         secrets: inherit

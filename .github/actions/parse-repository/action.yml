@@ -1,4 +1,4 @@
-name: parse-repository
+name: Parse repository name
 
 description: Parse repository full name
 
@@ -21,7 +21,8 @@ outputs:
 runs:
     using: composite
     steps:
-        - id: parse
+        - name: Parse
+          id: parse
           uses: actions/github-script@v8
           with:
               result-encoding: string
