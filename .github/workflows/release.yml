@@ -138,7 +138,10 @@ jobs:
             - name: Setup variant
               uses: ./.github/actions/setup-variant
               with:
-                  variant: ${{ matrix.variant }}
+                  variant: ${{ inputs.variant }}
+
+            - name: Setup CI
+              uses: ./.github/actions/ci-setup
 
             - name: Publish to npm
               id: publish
