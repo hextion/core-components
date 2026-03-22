@@ -11,7 +11,7 @@ const VERSION_BRANCH_PREFIX = 'version/';
 const PACKAGE_TAG_REGEXP = /(@[^/\s]+\/[^@]+|[^/\s]+)@([^\s]+)/;
 
 /**
- * @param {Pick<import('@actions/github-script').AsyncFunctionArguments, 'context' |'core' |  'exec'>} args
+ * @param {Pick<import('@actions/github-script').AsyncFunctionArguments, 'context' | 'core' | 'exec'>} args
  * @returns {Promise<string | undefined>}
  */
 // eslint-disable-next-line complexity
