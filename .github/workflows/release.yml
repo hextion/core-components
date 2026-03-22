@@ -104,7 +104,7 @@ jobs:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     snapshot_release:
-        name: Ssnapshot release
+        name: Snapshot release
         if: ${{ github.event_name == 'workflow_dispatch' && github.repository == 'core-ds/core-components' }}
         permissions:
             id-token: write # to use OpenID Connect token for trusted publishing
