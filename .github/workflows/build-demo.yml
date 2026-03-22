@@ -1,4 +1,4 @@
-name: Build demo
+name: build-demo
 
 on:
     workflow_call:
@@ -31,7 +31,6 @@ env:
 
 jobs:
     artifact:
-        name: Find artifact
         runs-on: ubuntu-latest
         outputs:
             run_id: ${{ steps.search.outputs.result }}
@@ -81,7 +80,6 @@ jobs:
                       return await getRunId();
 
     build-demo:
-        name: Build demo (${{ inputs.variant }})
         needs: artifact
         if: ${{ needs.artifact.outputs.run_id == github.run_id }}
         runs-on: ubuntu-latest

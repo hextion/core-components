@@ -1,4 +1,4 @@
-name: Update pull request screenshots
+name: update-pull-request-screenshots
 
 on:
     workflow_dispatch:
@@ -25,19 +25,17 @@ defaults:
 
 jobs:
     guard:
-        name: Guard
         runs-on: ubuntu-latest
         steps:
             - name: Check if repo is correct
               if: ${{ github.repository != 'core-ds/core-components' }}
               run: |
                   echo 'This workflow is designed to use inside `core-ds/core-components` repository only.'
-                  echo 'If you want to update your screenshots, use the `Update Screenshots` workflow.'
+                  echo 'If you want to update your screenshots, use the `update-screenshots` workflow.'
 
                   exit 1
 
     build-demo:
-        name: Build demo
         needs: guard
         uses: ./.github/workflows/build-demo.yml
         secrets: inherit
@@ -46,7 +44,6 @@ jobs:
             artifact-name: ${{ inputs.variant }}
 
     update:
-        name: Update screenshots (${{ inputs.variant }})
         runs-on: ubuntu-latest
         needs: build-demo
         env:

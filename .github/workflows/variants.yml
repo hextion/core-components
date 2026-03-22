@@ -1,4 +1,4 @@
-name: Variants
+name: variants
 
 on:
     workflow_call:
@@ -23,7 +23,6 @@ defaults:
 
 jobs:
     variants:
-        name: Variants
         runs-on: ubuntu-latest
         outputs:
             config: ${{ steps.config.outputs.result }}

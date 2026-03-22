@@ -1,4 +1,4 @@
-name: Release
+name: release
 
 on:
     workflow_dispatch: # version/48 and pull request
@@ -35,7 +35,6 @@ env:
 
 jobs:
     release:
-        name: Release
         if: ${{ github.event_name == 'push' && github.repository == 'core-ds/core-components' }}
         runs-on: ubuntu-latest
         outputs:
@@ -67,13 +66,11 @@ jobs:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     variants:
-        name: Variants
         uses: ./.github/workflows/variants.yml
         with:
             include-default: false
 
     variant_release:
-        name: Variant release
         needs: [release, variants]
         strategy:
             matrix:
@@ -105,7 +102,6 @@ jobs:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     snapshot_release:
-        name: Snapshot release
         if: ${{ github.event_name == 'workflow_dispatch' && github.repository == 'core-ds/core-components' }}
         permissions:
             id-token: write # to use OpenID Connect token for trusted publishing
@@ -155,7 +151,6 @@ jobs:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     comment:
-        name: Comment
         needs: snapshot_release
         if: ${{ fromJson(needs.snapshot_release.outputs.published) }}
         runs-on: ubuntu-latest

@@ -1,4 +1,4 @@
-name: Resolve demo params
+name: resolve-demo-params
 
 on:
     workflow_call:
@@ -28,7 +28,6 @@ env:
 
 jobs:
     resolve:
-        name: Resolve
         runs-on: ubuntu-latest
         outputs:
             ref: ${{ steps.resolve-ref.outputs.result }}

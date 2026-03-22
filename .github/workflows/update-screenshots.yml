@@ -1,4 +1,4 @@
-name: Update screenshots
+name: update-screenshots
 
 on:
     workflow_dispatch:
@@ -21,7 +21,6 @@ defaults:
 
 jobs:
     build-demo:
-        name: Build demo
         uses: ./.github/workflows/build-demo.yml
         secrets: inherit
         with:
@@ -29,7 +28,6 @@ jobs:
             artifact-name: ${{ inputs.variant }}
 
     update:
-        name: Update screenshots (${{ inputs.variant }})
         runs-on: ubuntu-latest
         needs: build-demo
         permissions:

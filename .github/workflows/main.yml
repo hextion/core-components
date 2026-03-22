@@ -1,4 +1,4 @@
-name: Main
+name: main
 
 on:
     pull_request:
@@ -20,11 +20,9 @@ defaults:
 
 jobs:
     variants:
-        name: Variants
         uses: ./.github/workflows/variants.yml
 
     build:
-        name: Build
         needs: [variants, setup-variant]
         strategy:
             matrix:
@@ -52,7 +50,6 @@ jobs:
                   BUILD_CONCURRENCY: 4
 
     lint:
-        name: Lint
         needs: [variants, setup-variant]
         strategy:
             matrix:
@@ -91,7 +88,6 @@ jobs:
                   yarn lint
 
     test:
-        name: Test
         needs: [variants, setup-variant]
         strategy:
             matrix:
@@ -133,7 +129,6 @@ jobs:
                   path: '${{ github.workspace }}/coverage'
 
     codemod-test:
-        name: Test codemod
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -149,7 +144,6 @@ jobs:
                   yarn test:codemod
 
     upload-coverage:
-        name: Upload coverage
         needs: test
         runs-on: ubuntu-latest
         if: ${{ github.repository == 'core-ds/core-components' }}
@@ -166,7 +160,6 @@ jobs:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
 
     demo:
-        name: Build demo
         uses: ./.github/workflows/demo.yml
         secrets: inherit
         with:
@@ -174,7 +167,6 @@ jobs:
             directory: ${{ github.event.pull_request.number }}
 
     screenshot-test:
-        name: Screenshot test
         needs: demo
         strategy:
             fail-fast: false
@@ -221,7 +213,6 @@ jobs:
                   if-no-files-found: ignore
 
     setup-variant:
-        name: Check variant setup
         needs: variants
         strategy:
             matrix:
@@ -237,7 +228,6 @@ jobs:
                   variant: ${{ matrix.variant }}
 
     upload-pull-request-data:
-        name: Upload pull request data
         runs-on: ubuntu-latest
         if: ${{ github.event_name == 'pull_request' }}
         steps:
@@ -256,7 +246,6 @@ jobs:
                   path: pull-request
 
     search-vars:
-        name: Search non-existent css vars
         needs: variants
         strategy:
             matrix:
@@ -288,7 +277,6 @@ jobs:
               run: yarn non-existent-css-vars
 
     ok:
-        name: Ok
         runs-on: ubuntu-latest
         if: always()
         needs: [lint, build, demo, test, screenshot-test, setup-variant, codemod-test, search-vars]

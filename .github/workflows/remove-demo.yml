@@ -1,4 +1,4 @@
-name: Remove demo
+name: remove-demo
 
 on:
     pull_request:
@@ -31,13 +31,11 @@ defaults:
 
 jobs:
     variants:
-        name: Variants
         if: ${{ inputs.include-variants || github.event_name == 'pull_request' }}
         uses: ./.github/workflows/variants.yml
         secrets: inherit
 
     resolve-directory:
-        name: Resolve directory
         needs: variants
         if: ${{ always() && (needs.variants.result == 'success' || needs.variants.result == 'skipped') }}
         runs-on: ubuntu-latest
@@ -70,7 +68,6 @@ jobs:
                       return directories.flatMap(({ directory }) => [{ directory }, ...variants.map(({ variant }) => ({ directory: `${directory}-${variant}` }))]);
 
     remove-demo:
-        name: Remove demo
         needs: resolve-directory
         runs-on: ubuntu-latest
         permissions:
