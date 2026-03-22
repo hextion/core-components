@@ -169,8 +169,8 @@ jobs:
         uses: ./.github/workflows/demo.yml
         secrets: inherit
         with:
+            version: ${{ case(github.event_name == 'pull_request', github.event.pull_request.head.sha, github.sha) }}
             directory: ${{ case(github.event_name == 'pull_request', github.event.pull_request.number, github.ref_name) }}
-            deploy-repository: ${{ github.event.pull_request.head.repo.full_name }}
 
     screenshot-test:
         name: Screenshot test
