@@ -70,7 +70,7 @@ jobs:
         with:
             include-default: false
 
-    variant_release:
+    variant-release:
         needs: [release, variants]
         strategy:
             matrix:
@@ -101,7 +101,7 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-    snapshot_release:
+    snapshot-release:
         if: ${{ github.event_name == 'workflow_dispatch' && github.repository == 'core-ds/core-components' }}
         permissions:
             id-token: write # to use OpenID Connect token for trusted publishing
@@ -151,8 +151,8 @@ jobs:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     comment:
-        needs: snapshot_release
-        if: ${{ fromJson(needs.snapshot_release.outputs.published) }}
+        needs: snapshot-release
+        if: ${{ fromJson(needs.snapshot-release.outputs.published) }}
         runs-on: ubuntu-latest
         permissions:
             issues: write # to post issue comments
@@ -161,7 +161,7 @@ jobs:
               id: prepare-comment
               uses: actions/github-script@v8
               env:
-                  PUBLISHED_PACKAGES: ${{ needs.snapshot_release.outputs.published-packages }}
+                  PUBLISHED_PACKAGES: ${{ needs.snapshot-release.outputs.published-packages }}
               with:
                   result-encoding: string
                   script: |
