@@ -24,8 +24,21 @@ defaults:
         shell: bash
 
 jobs:
+    guard:
+        name: Guard
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check if repo is correct
+              if: ${{ github.repository != 'core-ds/core-components' }}
+              run: |
+                  echo 'This workflow is designed to use inside `core-ds/core-components` repository only.'
+                  echo 'If you want to update your screenshots, use the `Update Screenshots` workflow.'
+
+                  exit 1
+
     build-demo:
         name: Build demo
+        needs: guard
         uses: ./.github/workflows/build-demo.yml
         secrets: inherit
         with:

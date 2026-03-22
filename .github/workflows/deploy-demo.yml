@@ -40,8 +40,8 @@ jobs:
         name: Deploy
         runs-on: ubuntu-latest
         continue-on-error: true
-        # check if vars are available
-        if: ${{ vars.APP_ID != '' }}
+        permissions:
+            contents: write
         outputs:
             url: 'https://${{ steps.repository.outputs.owner }}.github.io/${{ steps.repository.outputs.repo }}/${{ inputs.directory }}'
         steps:
@@ -53,6 +53,7 @@ jobs:
 
             - name: Generate app token
               id: generate-token
+              if: ${{ github.repository == 'core-ds/core-components' }}
               uses: actions/create-github-app-token@v3
               with:
                   app-id: ${{ vars.APP_ID }}
@@ -64,7 +65,7 @@ jobs:
               uses: actions/checkout@v6
               with:
                   repository: ${{ steps.repository.outputs.full-name }}
-                  token: ${{ steps.generate-token.outputs.token }}
+                  token: ${{ case(github.repository == 'core-ds/core-components', steps.generate-token.outputs.token, secrets.GITHUB_TOKEN) }}
                   ref: gh-pages
                   lfs: true
 

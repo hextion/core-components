@@ -73,6 +73,8 @@ jobs:
         name: Remove demo
         needs: resolve-directory
         runs-on: ubuntu-latest
+        permissions:
+            contents: write
         if: ${{ always() && needs.resolve-directory.result == 'success' }}
         steps:
             - name: Parse repository name
@@ -83,6 +85,7 @@ jobs:
 
             - name: Generate app token
               id: generate-token
+              if: ${{ github.repository == 'core-ds/core-components' }}
               uses: actions/create-github-app-token@v3
               with:
                   app-id: ${{ vars.APP_ID }}
@@ -94,7 +97,7 @@ jobs:
               uses: actions/checkout@v6
               with:
                   repository: ${{ steps.repository.outputs.full-name }}
-                  token: ${{ steps.generate-token.outputs.token }}
+                  token: ${{ case(github.repository == 'core-ds/core-components', steps.generate-token.outputs.token, secrets.GITHUB_TOKEN) }}
                   ref: gh-pages
                   lfs: true
 
