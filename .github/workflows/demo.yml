@@ -7,7 +7,6 @@ on:
                 description: Version of @alfalab/core-components package, tag, ref or sha
                 required: false
                 type: string
-                default: ${{ github.ref }}
             directory:
                 description: Directory to deploy demo
                 required: false
@@ -16,7 +15,6 @@ on:
                 description: Repository
                 required: false
                 type: string
-                default: ${{ github.repository }}
         outputs:
             run-id:
                 description: Artifact workflow run id

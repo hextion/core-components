@@ -25,7 +25,6 @@ on:
                 description: Repository
                 required: false
                 type: string
-                default: ${{ github.repository }}
             demo-ref:
                 description: Demo ref
                 type: string

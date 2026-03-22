@@ -7,7 +7,6 @@ on:
                 description: Checkout ref
                 required: false
                 type: string
-                default: ${{ github.ref }}
             include-default:
                 description: Whether include default variant of core-components
                 required: false
