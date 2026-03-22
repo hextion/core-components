@@ -169,7 +169,7 @@ jobs:
         uses: ./.github/workflows/demo.yml
         secrets: inherit
         with:
-            version: ${{ case(github.event_name == 'pull_request', github.event.pull_request.head.sha, github.sha) }}
+            version: ${{ case(github.event_name == 'pull_request', github.event.pull_request.head.sha, '') }}
             directory: ${{ case(github.event_name == 'pull_request', github.event.pull_request.number, '') }}
 
     screenshot-test:
