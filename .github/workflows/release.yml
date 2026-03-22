@@ -35,7 +35,7 @@ env:
 
 jobs:
     release:
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' && github.repository == 'core-ds/core-components' }}
         runs-on: ubuntu-latest
         outputs:
             published: ${{ steps.changesets.outputs.published }}
