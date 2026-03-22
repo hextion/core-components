@@ -170,7 +170,7 @@ jobs:
         secrets: inherit
         with:
             version: ${{ case(github.event_name == 'pull_request', github.event.pull_request.head.sha, github.sha) }}
-            directory: ${{ case(github.event_name == 'pull_request', github.event.pull_request.number, github.ref_name) }}
+            directory: ${{ case(github.event_name == 'pull_request', github.event.pull_request.number, '') }}
 
     screenshot-test:
         name: Screenshot test
