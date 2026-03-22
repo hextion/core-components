@@ -26,8 +26,8 @@ on:
                 required: false
                 type: string
                 default: ${{ github.repository }}
-            sha:
-                description: The SHA of the commit
+            demo-ref:
+                description: Demo ref
                 type: string
                 required: false
 
@@ -75,8 +75,8 @@ jobs:
             - name: Download demo
               uses: actions/download-artifact@v8
               with:
-                  name: '${{ inputs.artifact-name }}'
-                  path: '${{ inputs.directory }}'
+                  name: ${{ inputs.artifact-name }}
+                  path: ${{ inputs.directory }}
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   run-id: ${{ inputs.run-id }}
 
@@ -97,12 +97,27 @@ jobs:
         outputs:
             json: ${{ steps.pull-requests.outputs.json }}
         steps:
+            - name: Checkout
+              uses: actions/checkout@v6
+              with:
+                  ref: ${{ inputs.demo-ref }}
+
+            - name: Get SHA
+              id: sha
+              uses: actions/github-script@v8
+              with:
+                  result-encoding: string
+                  script: |
+                      const { stdout } = await exec.getExecOutput('git', ['rev-list', '-n', '1', 'HEAD']);
+
+                      return stdout.trim();
+
             - name: Find open pull requests
               uses: core-ds/core-components/.github/actions/find-open-pull-requests@master
               id: pull-requests
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
-                  sha: ${{ inputs.sha }}
+                  sha: ${{ steps.sha.outputs.result }}
 
     comment:
         name: Comment

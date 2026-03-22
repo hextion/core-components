@@ -49,33 +49,12 @@ jobs:
             version: ${{ inputs.version }}
             directory: ${{ inputs.directory }}
 
-    sha:
-        name: Resolve demo SHA
-        needs: params
-        runs-on: ubuntu-latest
-        outputs:
-            result: ${{ steps.find.outputs.result }}
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v6
-              if: ${{ github.event_name == 'workflow_dispatch' }}
-              with:
-                  ref: ${{ needs.params.outputs.ref }}
-
-            - name: Get SHA
-              id: find
-              if: ${{ github.event_name == 'workflow_dispatch' }}
-              uses: actions/github-script@v8
-              with:
-                  result-encoding: string
-                  script: |
-                      const { stdout } = await exec.getExecOutput('git', ['rev-list', '-n', '1', 'HEAD']);
-
-                      return stdout.trim();
-
     variants:
         name: Variants
+        needs: params
         uses: ./.github/workflows/variants.yml
+        with:
+            ref: ${{ needs.params.outputs.ref }}
 
     build-demo:
         name: Build demo
@@ -92,7 +71,7 @@ jobs:
 
     deploy:
         name: Deploy demo
-        needs: [build-demo, params, sha, variants]
+        needs: [build-demo, params, variants]
         strategy:
             max-parallel: 1
             matrix:
@@ -105,4 +84,4 @@ jobs:
             variant: ${{ matrix.variant }}
             artifact-name: ${{ matrix.variant }}
             deploy-repository: ${{ inputs.deploy-repository }}
-            sha: ${{ needs.sha.outputs.result }}
+            demo-ref: ${{ needs.params.outputs.ref }}
