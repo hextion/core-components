@@ -152,6 +152,7 @@ jobs:
         name: Upload coverage
         needs: test
         runs-on: ubuntu-latest
+        if: ${{ github.repository == 'core-ds/core-components' }}
         steps:
             - name: Download coverage
               uses: actions/download-artifact@v8
