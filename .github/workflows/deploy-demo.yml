@@ -123,6 +123,9 @@ jobs:
         needs: [deploy, pull-requests]
         if: ${{ !fromJson(needs.pull-requests.outputs.empty) }}
         continue-on-error: true
+        permissions:
+            issues: write # to post issue comments
+            pull-requests: write # to post pull-requests comments
         strategy:
             fail-fast: false
             matrix:

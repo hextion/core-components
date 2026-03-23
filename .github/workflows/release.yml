@@ -159,6 +159,7 @@ jobs:
         runs-on: ubuntu-latest
         permissions:
             issues: write # to post issue comments
+            pull-requests: write # to post pull-requests comments
         steps:
             - name: Prepare comment
               id: prepare-comment
